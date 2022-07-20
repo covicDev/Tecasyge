@@ -16,7 +16,7 @@ namespace Tests
             if (_debug) Debug.Log($"{MethodBase.GetCurrentMethod().Name}");
 
             // arrange
-            I_CameraMovement cameraMovement = Substitute.For<I_CameraMovement>();
+            _ICameraMovement cameraMovement = Substitute.For<_ICameraMovement>();
             var vector = new Vector3(int.MaxValue, int.MinValue);
             
             // act

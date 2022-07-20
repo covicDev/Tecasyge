@@ -2,35 +2,25 @@
 
 namespace _cov._Util._Camera
 {
-    public interface I_CameraMovement
+    public class _CameraMovement : MonoBehaviour, _ICameraMovement
     {
-        void _CameraReset();
-        Vector3 _ClampCamera(Vector3 targetPosition);
-    }
-
-    public class _CameraMovement : MonoBehaviour, I_CameraMovement
-    {
-        #region --- Serialize field ---
-        // Background for camera.
-        [SerializeField] SpriteRenderer _backgroundImage;
-        private float mapMinX, mapMaxX, mapMinY, mapMaxY;
-
-        // Jump of camera in order to action.
-        [SerializeField] float _jumpOfCamera = .5f;
-
-        // Camera zoom speed.
-        [SerializeField] private float _zoomSpeed = 5f;
-
-        // Camera customs.
-        [SerializeField] private float _minZoomValue = 4f;
-        [SerializeField] private float _maxZoomValue = 6f;
-        [SerializeField] private float _resetZoomValue = 5f;
-
-        #endregion
+        // Camera controller reference.
+        private _CameraController _cameraControllerRef => GameObject.Find("GameManager").transform.GetComponent<_CameraController>();
 
         #region --- Variable ---
         // Main camera reference.
         private Camera _camera;
+
+        // Background sprite reference.
+        private SpriteRenderer _backgroundImage;
+        
+        // Background border values.
+        private float mapMinX, mapMaxX, mapMinY, mapMaxY;
+
+        // Camera customs.
+        private float _normalZoomValue;
+        private float _minZoomValue;
+        private float _maxZoomValue;
 
         // For camera coordinates. 
         private Vector3 _originPosition;
@@ -42,19 +32,21 @@ namespace _cov._Util._Camera
         #endregion
 
         #region --- Default method ---
-        private void Awake()
+        private void Start()
         {
+            _camera = Camera.main;
+            
+            this._backgroundImage = this._cameraControllerRef._BackgroundImage;
             mapMinX = _backgroundImage.transform.position.x - _backgroundImage.bounds.size.x / 2f;
             mapMaxX = _backgroundImage.transform.position.x + _backgroundImage.bounds.size.x / 2f;
             mapMinY = _backgroundImage.transform.position.y - _backgroundImage.bounds.size.y / 2f;
             mapMaxY = _backgroundImage.transform.position.y + _backgroundImage.bounds.size.y / 2f;
+
+            this._normalZoomValue = this._cameraControllerRef._NormalZoomValue;
+            this._minZoomValue = this._cameraControllerRef._MinZoomValue;
+            this._maxZoomValue = this._cameraControllerRef._MinZoomValue;
         }
-        void Start()
-        {
-            _camera = Camera.main;
-            Debug.Log($"this._camera.orthographicSize: {this._camera.orthographicSize}");
-        }
-        void FixedUpdate()
+        private void FixedUpdate()
         {
             #region Action for mouse wheel
             if (Input.GetAxis("Mouse ScrollWheel") > 0f) // go forward
@@ -112,9 +104,9 @@ namespace _cov._Util._Camera
             float minX = mapMinX + camWidth;
             float maxX = mapMaxX - camWidth;
 
-            float maxY = mapMaxY - camHeight;                                                                      
-            float minY = mapMinY + camHeight;        
-            
+            float maxY = mapMaxY - camHeight;
+            float minY = mapMinY + camHeight;
+
             float newX = Mathf.Clamp(targetPosition.x, minX, maxX);
             float newY = Mathf.Clamp(targetPosition.y, minY, maxY);
 
@@ -128,13 +120,13 @@ namespace _cov._Util._Camera
         /// </summary>
         public void _CameraReset()
         {
-            Mathf.Clamp(this._resetZoomValue, this._minZoomValue, this._maxZoomValue);
+            Mathf.Clamp(this._normalZoomValue, this._minZoomValue, this._maxZoomValue);
 
             // Reset the position of camera.
             this._camera.transform.position = Vector3.zero;
 
             // Reset the size of camera.
-            this._camera.orthographicSize = this._resetZoomValue;
+            this._camera.orthographicSize = this._normalZoomValue;
         }
 
         #endregion
@@ -143,18 +135,24 @@ namespace _cov._Util._Camera
         // Moves camera to the right.
         private void _goRight()
         {
-            float jump = this._jumpOfCamera;
+            float jump = this._cameraControllerRef._JumpOfCamera;
             this._camera.transform.Translate(Vector3.right * jump);
             this._camera.transform.position = this._ClampCamera(this._camera.transform.position);
         }
         // Moves camera to the left.
         private void _goLeft()
         {
-            float jump = this._jumpOfCamera;
+            float jump = this._cameraControllerRef._JumpOfCamera;
             this._camera.transform.Translate(Vector3.left * jump);
             this._camera.transform.position = this._ClampCamera(this._camera.transform.position);
         }
 
         #endregion
+    }
+
+    public interface _ICameraMovement
+    {
+        void _CameraReset();
+        Vector3 _ClampCamera(Vector3 targetPosition);
     }
 }
