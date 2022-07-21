@@ -1,0 +1,56 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>420</x><y>80</y><w>410</w><h>210</h></coordinates><panel_attributes>*&lt;&lt;_CameraMovement&gt;&gt;*
+MonoBehaviour
+namespace::_cov._Util._Camera
+-
+- _CameraController _cameraControllerRef;
+
+-.
+- void Awake()
+- void Start()
+- void FixedUpdate()
+- void LateUpdate()
+
++ Vector3 _ClampCamera(Vector3)
++ void _CameraReset()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>90</x><y>80</y><w>230</w><h>100</h></coordinates><panel_attributes>&lt;&lt;_ICameraMovement&gt;&gt;
+[Interface]
+namespace::_cov._Util._Camera
+-
+void _CameraReset();
+Vector3 _ClampCamera(Vector3);</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>90</y><w>130</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;110;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1080</x><y>80</y><w>410</w><h>320</h></coordinates><panel_attributes>*&lt;&lt;_CameraController&gt;*
+MonoBehaviour
+namespace::_cov._Util._Camera
+-
+[SerializeField] SpriteRenderer _backgroundImage;
+[SerializeField] float _jumpOfCamera;
+
+[SerializeField] private float _zoomSpeed;
+[SerializeField] private float _minZoomValue;
+[SerializeField] private float _maxZoomValue;
+[SerializeField] private float _normalZoomValue;
+
+[SerializeField] float _arrowNavigationSpeed;
+[SerializeField] Color _arrowNavigationNormalColor;
+[SerializeField] Color _arrowNavigationHighlightColor;
+
+-.
+
++ Vector3 _ClampCamera(Vector3);
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>820</x><y>90</y><w>280</w><h>30</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>260;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>350</x><y>400</y><w>470</w><h>170</h></coordinates><panel_attributes>*&lt;&lt;_CameraArrowNavigationMovement&gt;&gt;*
+MonoBehaviour
+namespace::_cov._Util._Camera
+-
+- _CameraController _cameraControllerRef;
+- [SerializeField] _ECameraArrowNavigationDirection _directionOfTheMove;
+- bool __onHover;
+-.
+- void Start();
+- void FixedUpdate();
+- void OnPointerEnter(PointerEventData)
+- void OnPointerExit(PointerEventData)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>810</x><y>100</y><w>290</w><h>350</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>270;10;30;10;30;330;10;330</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>460</y><w>240</w><h>110</h></coordinates><panel_attributes>&lt;&lt;_ECameraArrowNavigationDirection&gt;&gt;
+Package::_cov.Enum
+--
+Left,
+Right,
+Up,
+Down</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>470</y><w>140</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>120;10;10;10</additional_attributes></element></diagram>

@@ -2,9 +2,14 @@
 
 namespace _cov._Util._Camera
 {
+    [RequireComponent(typeof(_CameraMovement))]
     public class _CameraController : MonoBehaviour
     {
         #region --- Serialize field ---
+
+        // Reference to main scene camera.
+        public Camera _MainCamera => Camera.main;
+
         [Header("Reference to background image.")]
         [SerializeField] SpriteRenderer _backgroundImage;
         public SpriteRenderer _BackgroundImage => _backgroundImage;
@@ -37,6 +42,13 @@ namespace _cov._Util._Camera
         public Color _ArrowNavigationHighlightColor => _arrowNavigationHighlightColor;
         #endregion
 
+        #endregion
+
+        #region --- Public method ---
+        public Vector3 _ClampCamera(Vector3 targetPosition)
+        {
+            return this.transform.GetComponentInChildren<_CameraMovement>()._ClampCamera(targetPosition);
+        }
         #endregion
     }
 }
