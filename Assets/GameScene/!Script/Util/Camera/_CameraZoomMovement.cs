@@ -5,7 +5,8 @@ namespace _cov._Util._Camera
     public class _CameraZoomMovement : MonoBehaviour, _ICameraZoomMovement
     {
         #region --- Variable ---
-        private _CameraController _cameraControllerRef => GameObject.Find("GameManager").transform.GetComponent<_CameraController>();
+        public _ICameraController _cameraControllerRef => GameObject.Find("GameManager").transform.GetComponent<_CameraController>();
+        private Camera _mainCameraRef => this._cameraControllerRef._MainCamera;
         private float _minZoomValue => this._cameraControllerRef._MinZoomValue;
         private float _maxZoomValue => this._cameraControllerRef._MaxZoomValue;
         private float _normalZoomValue => this._cameraControllerRef._NormalZoomValue;
@@ -18,7 +19,7 @@ namespace _cov._Util._Camera
         /// </summary>
         public void _CameraZoomIn()
         {
-            float size = _minZoomValue;
+            float size = this._minZoomValue;
             this._setCameraZoom(size);
         }
         /// <summary>
@@ -26,7 +27,7 @@ namespace _cov._Util._Camera
         /// </summary>
         public void _CameraZoomOut()
         {
-            float size = _maxZoomValue;
+            float size = this._maxZoomValue;
             this._setCameraZoom(size);
         }
         /// <summary>
@@ -34,7 +35,7 @@ namespace _cov._Util._Camera
         /// </summary>
         public void _CameraZoomReset()
         {
-            float size = _normalZoomValue;
+            float size = this._normalZoomValue;
             this._setCameraZoom(size);
         }
 
@@ -44,10 +45,10 @@ namespace _cov._Util._Camera
         private void _setCameraZoom(float size)
         {
             // check camera size.
-            this._cameraControllerRef._MainCamera.orthographicSize = Mathf.Clamp(size, this._minZoomValue, this._maxZoomValue);
+            this._mainCameraRef.orthographicSize = Mathf.Clamp(size, this._minZoomValue, this._maxZoomValue);
 
             // check camera position;
-            this._cameraControllerRef._MainCamera.transform.position = this._cameraControllerRef._ClampCamera(this._cameraControllerRef._MainCamera.transform.position);
+            this._mainCameraRef.transform.position = this._cameraControllerRef._ClampCamera(this._mainCameraRef.transform.position);
         }
 
         #endregion
@@ -55,6 +56,7 @@ namespace _cov._Util._Camera
 
     public interface _ICameraZoomMovement
     {
+        _ICameraController _cameraControllerRef { get; }
         void _CameraZoomIn();
         void _CameraZoomOut();
         void _CameraZoomReset();

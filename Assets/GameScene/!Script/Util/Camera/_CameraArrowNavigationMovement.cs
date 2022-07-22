@@ -14,7 +14,7 @@ namespace _cov._Util._Camera
 
         #endregion
         // Camera controller reference.
-        private _CameraController _cameraControllerRef => GameObject.Find("GameManager").transform.GetComponent<_CameraController>();
+       public _ICameraController _cameraControllerRef => GameObject.Find("GameManager").transform.GetComponent<_CameraController>();
 
         // Checks if mouse is over.
         private bool __onHover = false;

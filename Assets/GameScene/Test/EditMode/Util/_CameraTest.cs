@@ -10,8 +10,9 @@ namespace Tests
     public class _CameraTest
     {
         private bool _debug = true;
+
         [Test]
-        public void _Camera_ClampCamerTest()
+        public void _0_cameraMovement_ClampCamera_Test()
         {
             if (_debug) Debug.Log($"{MethodBase.GetCurrentMethod().Name}");
 
@@ -28,6 +29,5 @@ namespace Tests
             // debug
             if (_debug) Debug.Log($"Start vector: {vector}, end vector: {result}.");
         }
-
     }
 }

@@ -15,6 +15,7 @@ public static class _AutoSave
     {
         if (state == PlayModeStateChange.ExitingEditMode)
         {
+            _ClearConsole();
             Debug.Log("Auto-saving...");
             EditorSceneManager.SaveOpenScenes();
             AssetDatabase.SaveAssets();

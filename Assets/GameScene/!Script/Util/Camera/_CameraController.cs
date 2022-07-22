@@ -2,8 +2,23 @@
 
 namespace _cov._Util._Camera
 {
-    [RequireComponent(typeof(_CameraMovement))]
-    public class _CameraController : MonoBehaviour
+    public interface _ICameraController
+    {
+        Color _ArrowNavigationHighlightColor { get; }
+        Color _ArrowNavigationNormalColor { get; }
+        float _ArrowNavigationSpeed { get; }
+        SpriteRenderer _BackgroundImage { get; }
+        void _SetBackgroungImage(SpriteRenderer value);
+        float _JumpOfCamera { get; }
+        Camera _MainCamera { get; }
+        float _MaxZoomValue { get; }
+        float _MinZoomValue { get; }
+        float _NormalZoomValue { get; }
+
+        Vector3 _ClampCamera(Vector3 targetPosition);
+    }
+
+    public class _CameraController : MonoBehaviour, _ICameraController
     {
         #region --- Serialize field ---
 
@@ -11,19 +26,18 @@ namespace _cov._Util._Camera
         public Camera _MainCamera => Camera.main;
 
         [Header("Reference to background image.")]
-        [SerializeField] SpriteRenderer _backgroundImage;
+        [SerializeField] SpriteRenderer _backgroundImage = new SpriteRenderer();
         public SpriteRenderer _BackgroundImage => _backgroundImage;
+        public void _SetBackgroungImage(SpriteRenderer value) => _backgroundImage = value;
 
 
         [Header("Camera left and right moving speed.")]
         [SerializeField] float _jumpOfCamera = .5f;
         public float _JumpOfCamera => _jumpOfCamera;
 
+
         #region -- Zoom values --
-        [Header("Camera zoom speed.")]
-        [SerializeField] private float _zoomSpeed = 5f;
-        public float _ZoomSpeed => _zoomSpeed;
-        // Camera customs.
+        [Header("Camera zoom values.")]
         [SerializeField] private float _minZoomValue = 4f;
         public float _MinZoomValue => _minZoomValue;
         [SerializeField] private float _maxZoomValue = 6f;
@@ -31,6 +45,7 @@ namespace _cov._Util._Camera
         [SerializeField] private float _normalZoomValue = 5f;
         public float _NormalZoomValue => _normalZoomValue;
         #endregion
+
 
         #region -- Arrow navigation values --
         [Header("Arrow navigation move speed.")]
@@ -50,5 +65,6 @@ namespace _cov._Util._Camera
             return this.transform.GetComponentInChildren<_CameraMovement>()._ClampCamera(targetPosition);
         }
         #endregion
+
     }
 }

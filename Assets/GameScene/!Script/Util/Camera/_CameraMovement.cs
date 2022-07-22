@@ -5,22 +5,22 @@ namespace _cov._Util._Camera
     public class _CameraMovement : MonoBehaviour, _ICameraMovement
     {
         // Camera controller reference.
-        private _CameraController _cameraControllerRef => GameObject.Find("GameManager").transform.GetComponent<_CameraController>();
+        public _ICameraController _cameraControllerRef => GameObject.Find("GameManager").transform.GetComponent<_CameraController>();
 
         #region --- Variable ---
         // Main camera reference.
-        private Camera _camera;
+        private Camera _camera => _cameraControllerRef._MainCamera;
 
         // Background sprite reference.
-        private SpriteRenderer _backgroundImage;
+        private SpriteRenderer _backgroundImage => _cameraControllerRef._BackgroundImage;
         
         // Background border values.
         private float mapMinX, mapMaxX, mapMinY, mapMaxY;
 
         // Camera customs.
-        private float _normalZoomValue;
-        private float _minZoomValue;
-        private float _maxZoomValue;
+        private float _normalZoomValue => _cameraControllerRef._NormalZoomValue;
+        private float _minZoomValue => _cameraControllerRef._MinZoomValue;
+        private float _maxZoomValue => _cameraControllerRef._MinZoomValue;
 
         // For camera coordinates. 
         private Vector3 _originPosition;
@@ -32,20 +32,14 @@ namespace _cov._Util._Camera
         #endregion
 
         #region --- Default method ---
-        private void Start()
+        private void Awake()
         {
-            _camera = Camera.main;
-            
-            this._backgroundImage = this._cameraControllerRef._BackgroundImage;
             mapMinX = _backgroundImage.transform.position.x - _backgroundImage.bounds.size.x / 2f;
             mapMaxX = _backgroundImage.transform.position.x + _backgroundImage.bounds.size.x / 2f;
             mapMinY = _backgroundImage.transform.position.y - _backgroundImage.bounds.size.y / 2f;
             mapMaxY = _backgroundImage.transform.position.y + _backgroundImage.bounds.size.y / 2f;
-
-            this._normalZoomValue = this._cameraControllerRef._NormalZoomValue;
-            this._minZoomValue = this._cameraControllerRef._MinZoomValue;
-            this._maxZoomValue = this._cameraControllerRef._MinZoomValue;
         }
+
         private void FixedUpdate()
         {
             #region Action for mouse wheel
@@ -152,6 +146,7 @@ namespace _cov._Util._Camera
 
     public interface _ICameraMovement
     {
+        _ICameraController _cameraControllerRef { get; }
         void _CameraReset();
         Vector3 _ClampCamera(Vector3 targetPosition);
     }
