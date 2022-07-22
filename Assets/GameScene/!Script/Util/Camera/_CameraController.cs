@@ -2,22 +2,6 @@
 
 namespace _cov._Util._Camera
 {
-    public interface _ICameraController
-    {
-        Color _ArrowNavigationHighlightColor { get; }
-        Color _ArrowNavigationNormalColor { get; }
-        float _ArrowNavigationSpeed { get; }
-        SpriteRenderer _BackgroundImage { get; }
-        void _SetBackgroungImage(SpriteRenderer value);
-        float _JumpOfCamera { get; }
-        Camera _MainCamera { get; }
-        float _MaxZoomValue { get; }
-        float _MinZoomValue { get; }
-        float _NormalZoomValue { get; }
-
-        Vector3 _ClampCamera(Vector3 targetPosition);
-    }
-
     public class _CameraController : MonoBehaviour, _ICameraController
     {
         #region --- Serialize field ---
@@ -66,5 +50,20 @@ namespace _cov._Util._Camera
         }
         #endregion
 
+    }
+    public interface _ICameraController
+    {
+        Color _ArrowNavigationHighlightColor { get; }
+        Color _ArrowNavigationNormalColor { get; }
+        float _ArrowNavigationSpeed { get; }
+        SpriteRenderer _BackgroundImage { get; }
+        void _SetBackgroungImage(SpriteRenderer value);
+        float _JumpOfCamera { get; }
+        Camera _MainCamera { get; }
+        float _MaxZoomValue { get; }
+        float _MinZoomValue { get; }
+        float _NormalZoomValue { get; }
+
+        Vector3 _ClampCamera(Vector3 targetPosition);
     }
 }

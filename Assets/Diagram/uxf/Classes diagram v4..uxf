@@ -1,0 +1,243 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>8</zoom_level><element><id>UMLClass</id><coordinates><x>696</x><y>0</y><w>328</w><h>168</h></coordinates><panel_attributes>*&lt;&lt;_CameraMovement&gt;&gt;*
+MonoBehaviour
+namespace::_cov._Util._Camera
+-
++ _ICameraController _cameraControllerRef;
+
+-.
+- void Awake();
+- void FixedUpdate();
+- void LateUpdate();
+
++ Vector3 _ClampCamera(Vector3);
++ void _CameraReset();
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>352</x><y>0</y><w>256</w><h>88</h></coordinates><panel_attributes>&lt;&lt;_ICameraMovement&gt;&gt;
+[Interface]
+namespace::_cov._Util._Camera
+-
+_ICameraController _cameraControllerRef { get; }
+void _CameraReset();
+Vector3 _ClampCamera(Vector3);</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>8</y><w>112</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;120;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1160</x><y>0</y><w>328</w><h>280</h></coordinates><panel_attributes>*&lt;&lt;_CameraController&gt;*
+MonoBehaviour
+namespace::_cov._Util._Camera
+-
++ Camera _MainCamera;
+
+[SerializeField] SpriteRenderer _backgroundImage;
+[SerializeField] float _jumpOfCamera;
+
+[SerializeField] private float _minZoomValue;
+[SerializeField] private float _maxZoomValue;
+[SerializeField] private float _normalZoomValue;
+
+[SerializeField] float _arrowNavigationSpeed;
+[SerializeField] Color _arrowNavigationNormalColor;
+[SerializeField] Color _arrowNavigationHighlightColor;
+
+-.
+
++ Vector3 _ClampCamera(Vector3);
+
+/# Set/
++ void _SetBackgroungImage(SpriteRenderer value);</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1016</x><y>8</y><w>160</w><h>24</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>180;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>640</x><y>256</y><w>376</w><h>160</h></coordinates><panel_attributes>*&lt;&lt;_CameraArrowNavigationMovement&gt;&gt;*
+MonoBehaviour
+namespace::_cov._Util._Camera
+-
++ _ICameraController _cameraControllerRef;
+- [SerializeField]  _ECameraArrowNavigationDirection _directionOfTheMove;
+- bool __onHover;
+
+-.
+- void Start();
+- void FixedUpdate();
+- void OnPointerEnter(PointerEventData)
+- void OnPointerExit(PointerEventData)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1008</x><y>16</y><w>168</w><h>280</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>190;10;30;10;30;330;10;330</additional_attributes></element><element><id>UMLClass</id><coordinates><x>360</x><y>304</y><w>192</w><h>88</h></coordinates><panel_attributes>&lt;&lt;_ECameraArrowNavigationDirection&gt;&gt;
+namespace::_cov._Util._Camera
+--
+Left,
+Right,
+Up,
+Down</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>544</x><y>312</y><w>112</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>120;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>688</x><y>496</y><w>328</w><h>144</h></coordinates><panel_attributes>*&lt;&lt;_CameraZoomMovement&gt;&gt;*
+MonoBehaviour
+namespace::_cov._Util._Camera
+-
++ _ICameraController _cameraControllerRef'
+
+-.
++ void _CameraZoomIn();
++ void _CameraZoomOut();
++ void _CameraZoomReset();
+
+- _setCameraZoom(float size);</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1008</x><y>24</y><w>168</w><h>504</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>190;10;40;10;40;610;10;610</additional_attributes></element><element><id>UMLClass</id><coordinates><x>328</x><y>496</y><w>240</w><h>104</h></coordinates><panel_attributes>&lt;&lt;_ICameraZoomMovement&gt;&gt;
+[Interface]
+namespace::_cov._Util._Camera
+-
+_ICameraController _cameraControllerRef { get; }
+void _CameraZoomIn();
+void _CameraZoomOut();
+void _CameraZoomReset();</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>512</y><w>144</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;160;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1616</x><y>0</y><w>296</w><h>256</h></coordinates><panel_attributes>&lt;&lt;_ICameraController&gt;&gt;
+[Interface]
+namespace::_cov._Util._Camera
+-
+        Color _ArrowNavigationHighlightColor { get; }
+        Color _ArrowNavigationNormalColor { get; }
+        float _ArrowNavigationSpeed { get; }
+
+        SpriteRenderer _BackgroundImage { get; }
+        void _SetBackgroungImage(SpriteRenderer value);
+
+        float _JumpOfCamera { get; }
+        Camera _MainCamera { get; }
+
+        float _MaxZoomValue { get; }
+        float _MinZoomValue { get; }
+        float _NormalZoomValue { get; }
+
+        Vector3 _ClampCamera(Vector3 targetPosition);</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1480</x><y>16</y><w>152</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>170;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1672</x><y>944</y><w>328</w><h>280</h></coordinates><panel_attributes>*&lt;&lt;_CardMinionController&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardMinion
+DesignPattern::Fasade
+bg=gray
+-
++ _ICardMinionBase _Base;
+-.
+
+- void _prepareCardGraphicAdapter();</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1184</x><y>968</y><w>328</w><h>280</h></coordinates><panel_attributes>*&lt;&lt;_CardMinionBase&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardMinion
+DesignPattern::Fasade
+bg=gray
+-
++ _ICardMinionManager _CardMinionManager;
++ _ICardMinionGraphicAdapter _CardMinionGraphicAdapter;
+_ICardMinionStatsModerator _CardMinionStatsModerator;
+-.
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1176</x><y>800</y><w>336</w><h>104</h></coordinates><panel_attributes>&lt;&lt;_ICardMinionBase&gt;&gt;
+[Interface]
+Namespace::_cov._CardMinion
+-
+_ICardMinionManager _CardMinionManager { get; }
+_ICardMinionGraphicAdapter _CardMinionGraphicAdapter { get; }
+_ICardMinionStatsModerator _CardMinionStatsModerator { get; }</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1336</x><y>896</y><w>24</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>1504</x><y>1000</y><w>184</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>210;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1664</x><y>784</y><w>336</w><h>88</h></coordinates><panel_attributes>&lt;&lt;_ICardMinionController&gt;&gt;
+[Interface]
+Namespace::_cov._CardMinion
+-
+_ICardMinionBase _Base { get; }</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1840</x><y>864</y><w>24</w><h>96</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>1544</y><w>176</w><h>96</h></coordinates><panel_attributes>&lt;&lt;_SCardMinionStruct&gt;&gt;
+Namespace::_cov._CardMinion
+--
++ _Image: Sprite
++ _Attack: int
++ _Life: int
++ _Armor: int
++ _Gold: int </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2152</x><y>912</y><w>328</w><h>280</h></coordinates><panel_attributes>*&lt;&lt;_CardMinionMovement&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardMinion
+bg=gray
+-
++ _ICardMinionController _cardMinionController
+
+-.
++ void OnBeginDrag(PointerEventData eventData);
++ void OnDrag(PointerEventData eventData);
++ void OnEndDrag(PointerEventData eventData);
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>656</x><y>1016</y><w>296</w><h>152</h></coordinates><panel_attributes>*&lt;&lt;_CardMinionManager&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardMinion
+bg=gray
+-
++ Camera _CameraMain;
++ _TableSpriteNumber _TableOfMinionSprites;
++ _ICardMinionStatsMaker _CardMinionStatsMaker;
+
+-.
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>944</x><y>1024</y><w>256</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>300;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>664</x><y>880</y><w>288</w><h>88</h></coordinates><panel_attributes>&lt;&lt;_ICardMinionManager&gt;&gt;
+[Interface]
+Namespace::_cov._CardMinion
+-
+Camera _CameraMain { get; }
+_TableSpriteNumber _TableOfMinionSprites { get; }
+_ICardMinionStatsMaker _CardMinionStatsMaker { get; }</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>816</x><y>960</y><w>24</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>1992</x><y>952</y><w>176</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>200;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>640</x><y>1224</y><w>328</w><h>280</h></coordinates><panel_attributes>*&lt;&lt;_CardMinionGraphicAdapter&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardMinion
+bg=gray
+-
+- _SCardMinionStruct _cardMinionBasisStats;
+- _SCardMinionStruct _cardMinionCurrentStats;
+
+-.
++ void _FirstRender();
++ void _Render();
++ void _UpdateStats();
++ void _SetStartValues(_SCardMinionStruct _struct);
+
+/# Basic sets/
++ void _SetNormalNumber(in Sprite[] sprites);
++ void _SetUnderNumber(in Sprite[] sprites);
++ void _SetOverNumber(in Sprite[] sprites);
++ void _SetWrongNumber(in Sprite[] sprites);
++ void _SetReferencesToValueSprites(GameObject[..]);</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>960</x><y>1032</y><w>240</w><h>224</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>280;10;30;10;30;260;10;260</additional_attributes></element><element><id>UMLClass</id><coordinates><x>272</x><y>1224</y><w>272</w><h>232</h></coordinates><panel_attributes>&lt;&lt;_ICardMinionGraphicAdapter&gt;&gt;
+[Interface]
+Namespace::_cov._CardMinion
+-
+void _FirstRender();
+void _Render();
+void _UpdateStats();
+
+/# Basic sets/
+void _SetStartValues(_SCardMinionStruct _struct);
+void _SetNormalNumber(in Sprite[] sprites);
+void _SetUnderNumber(in Sprite[] sprites);
+void _SetOverNumber(in Sprite[] sprites);
+void _SetWrongNumber(in Sprite[] sprites);
+void _SetReferencesToValueSprites(GameObject[..]);</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>536</x><y>1240</y><w>120</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;130;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>248</x><y>1656</y><w>328</w><h>280</h></coordinates><panel_attributes>*&lt;&lt;_CardMinionStatsModerator&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardMinion
+bg=gray
+-
+
+-.
++_SCardMinionStruct _GetCurrentStatsStruct();
+
++ void _PrepareCardMinionBasisStats()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>272</x><y>1504</y><w>272</w><h>104</h></coordinates><panel_attributes>&lt;&lt;_ICardMinionStatsModerator&gt;&gt;
+[Interface]
+Namespace::_cov._CardMinion
+-
+_SCardMinionStruct _GetCurrentStatsStruct();
+void _PrepareCardMinionBasisStats();</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>1600</y><w>24</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>568</x><y>1040</y><w>632</w><h>648</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>770;10;550;10;550;790;10;790</additional_attributes></element><element><id>UMLClass</id><coordinates><x>344</x><y>920</y><w>200</w><h>88</h></coordinates><panel_attributes>&lt;&lt;_TableSpriteNumber&gt;&gt;
+Namespace::_cov._CardMinion
+--
+[SerializeField] Sprite[] _NormalNumber;
+[SerializeField] Sprite[] _UnderNumber;
+[SerializeField] Sprite[] _OverNumber;
+[SerializeField] Sprite[] _WrongNumber;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>272</x><y>872</y><w>688</w><h>312</h></coordinates><panel_attributes>lt=.
+GameManager</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>168</x><y>1272</y><w>488</w><h>296</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>590;10;500;10;500;260;60;260;60;350;10;350</additional_attributes></element><element><id>Relation</id><coordinates><x>168</x><y>1552</y><w>96</w><h>168</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>100;190;60;190;60;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>344</x><y>1024</y><w>200</w><h>56</h></coordinates><panel_attributes>&lt;&lt;_TableSpriteMinion&gt;&gt;
+Namespace::_cov._CardMinion
+--
+[SerializeField] Sprite[] _spritesOfMinons;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>640</x><y>1536</y><w>328</w><h>112</h></coordinates><panel_attributes>Use..
+Prepare:
+1. _prepareCardGraphicAdapter(); (Controller)
+
+Act:
+1. _UpdateStats(_SCardMinionStruct currentStats);
+2. _Render();</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>792</x><y>1496</y><w>24</w><h>56</h></coordinates><panel_attributes>lt=-
+fg=gray
+</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLNote</id><coordinates><x>248</x><y>1968</y><w>328</w><h>112</h></coordinates><panel_attributes>Use..
+Prepare:
+1. void _PrepareCardMinionBasisStats();
+
+Act:</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>1928</y><w>24</w><h>56</h></coordinates><panel_attributes>lt=-
+fg=gray
+</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>344</x><y>1096</y><w>256</w><h>72</h></coordinates><panel_attributes>*&lt;&lt;_CardMinionStatsMaker&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardMinion._CardMinionMaker
+-
+-.
++ _SCardMinionStruct _MakeMinion(int tierLever);
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>304</x><y>1032</y><w>56</w><h>104</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>50;110;10;110;10;10;50;10</additional_attributes></element><element><id>Relation</id><coordinates><x>536</x><y>920</y><w>136</w><h>176</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>150;200;40;200;40;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>592</x><y>1080</y><w>80</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>80;10;30;10;30;40;10;40</additional_attributes></element></diagram>

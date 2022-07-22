@@ -5,7 +5,7 @@ namespace _cov._Util._Camera
     public class _CameraMovement : MonoBehaviour, _ICameraMovement
     {
         // Camera controller reference.
-        public _ICameraController _cameraControllerRef => GameObject.Find("GameManager").transform.GetComponent<_CameraController>();
+        public _ICameraController _cameraControllerRef => GameObject.Find("GameManager").transform.GetComponentInChildren<_CameraController>();
 
         #region --- Variable ---
         // Main camera reference.

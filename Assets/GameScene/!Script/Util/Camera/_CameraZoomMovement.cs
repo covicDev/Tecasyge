@@ -5,7 +5,7 @@ namespace _cov._Util._Camera
     public class _CameraZoomMovement : MonoBehaviour, _ICameraZoomMovement
     {
         #region --- Variable ---
-        public _ICameraController _cameraControllerRef => GameObject.Find("GameManager").transform.GetComponent<_CameraController>();
+        public _ICameraController _cameraControllerRef => GameObject.Find("GameManager").transform.GetComponentInChildren<_CameraController>();
         private Camera _mainCameraRef => this._cameraControllerRef._MainCamera;
         private float _minZoomValue => this._cameraControllerRef._MinZoomValue;
         private float _maxZoomValue => this._cameraControllerRef._MaxZoomValue;

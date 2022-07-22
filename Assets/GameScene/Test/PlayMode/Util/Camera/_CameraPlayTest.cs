@@ -35,7 +35,7 @@ namespace Tests
 
             // Background image for testing.
             // _CameraMovement takes border values of the background.
-            var background = Resources.Load("Sprite/Level/Background", typeof(GameObject)) as GameObject;
+            var background = Resources.Load("Prefab/Level/Background", typeof(GameObject)) as GameObject;
             var spriteBackground = background.GetComponent<SpriteRenderer>();
 
             // _CameraController component.

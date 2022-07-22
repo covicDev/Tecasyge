@@ -1,0 +1,15 @@
+{
+    "name": "_CardMinionAssembly",
+    "references": [
+        "GUID:03ea209287f631045b0ee30564bef4c8"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
