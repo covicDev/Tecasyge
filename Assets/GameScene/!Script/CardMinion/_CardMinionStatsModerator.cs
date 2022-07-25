@@ -37,6 +37,7 @@ namespace _cov._CardMinion
         #endregion
 
         #endregion
+
     }
     public interface _ICardMinionStatsModerator
     {

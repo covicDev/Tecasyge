@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+using _cov._Enum;
+
 namespace _cov._CardMinion
 {
     public class _CardMinionController : MonoBehaviour, _ICardMinionController
@@ -46,7 +48,7 @@ namespace _cov._CardMinion
                 );
 
             // Sets the start values of minion.
-             this._Base._CardMinionGraphicAdapter._SetStartValues(this._Base._CardMinionStatsModerator._GetCurrentStatsStruct());
+            this._Base._CardMinionGraphicAdapter._SetStartValues(this._Base._CardMinionStatsModerator._GetCurrentStatsStruct());
 
             // Sets the sprites of numbers.
             var data = this._Base._CardMinionManager._TableOfMinionSprites;
@@ -64,11 +66,22 @@ namespace _cov._CardMinion
 
         #region --- Public method ---
 
+        public bool _TransferCardMinionToThisField(Transform parent, Vector3 position, _EField field)
+        {
+            return this._Base._CardMinionTransferModerator._TransferCardMinionToThisField(parent, position, field);
+        }
+        public bool _CheckIfCardMinionCanBeTransferedToThisField(_EField field)
+        {
+            return this._Base._CardMinionTransferModerator._CheckIfCardMinionCanBeTransferedToThisField(field);
+        }
+
         #endregion
 
     }
+
     public interface _ICardMinionController
     {
         _ICardMinionBase _Base { get; }
+        bool _TransferCardMinionToThisField(Transform parent, Vector3 position, _EField field);
     }
 }

@@ -17,7 +17,7 @@ namespace _cov._CardMinion
         #region --- Mouse events ---
         public void OnBeginDrag(PointerEventData eventData)
         {
-            Cursor.visible = false;
+            // Cursor.visible = false;
             this._canvasGroup.blocksRaycasts = false;
 
             // Drag only when left mouse is used.
@@ -41,7 +41,7 @@ namespace _cov._CardMinion
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            Cursor.visible = true;
+            // Cursor.visible = true;
             this._canvasGroup.blocksRaycasts = true;
         }
 
