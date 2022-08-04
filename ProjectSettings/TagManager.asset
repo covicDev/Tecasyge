@@ -45,6 +45,9 @@ TagManager:
   - name: _FieldBattle
     uniqueID: 4036496011
     locked: 0
+  - name: _CardGold
+    uniqueID: 1230492467
+    locked: 0
   - name: _CardMinion
     uniqueID: 3570982795
     locked: 0
