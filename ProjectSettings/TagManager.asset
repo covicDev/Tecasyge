@@ -7,6 +7,7 @@ TagManager:
   - _CardMinion
   - _CardGold
   - _FieldBattle
+  - _FieldDraw
   layers:
   - Default
   - TransparentFX
@@ -43,6 +44,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: _FieldDrawLayer
+    uniqueID: 1363575561
     locked: 0
   - name: _FieldBattleLayer
     uniqueID: 4036496011

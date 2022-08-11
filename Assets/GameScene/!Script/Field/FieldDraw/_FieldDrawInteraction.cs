@@ -9,7 +9,7 @@ namespace _cov._FieldDraw
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            throw new System.NotImplementedException();
+            this._FieldDrawController._GetNextCard();
         }
 
         public void OnPointerEnter(PointerEventData eventData)
