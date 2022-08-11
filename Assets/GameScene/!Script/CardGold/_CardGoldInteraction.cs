@@ -15,12 +15,12 @@ namespace _cov._CardGold
         #region --- Mouse over action ---
         public void OnPointerEnter(PointerEventData eventData)
         {
-            this._CardGoldController._Base._CardGoldBackgorundModerator._ShowCardGoldShadow();
+            this._CardGoldController._Base._CardGoldBackgroundModerator._ShowCardGoldShadow();
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            this._CardGoldController._Base._CardGoldBackgorundModerator._HideCardGoldShadow();
+            this._CardGoldController._Base._CardGoldBackgroundModerator._HideCardGoldShadow();
         }
 
         #endregion

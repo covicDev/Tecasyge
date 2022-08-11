@@ -1,0 +1,25 @@
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
+
+namespace _cov._FieldDraw
+{
+    public class _FieldDrawInteraction : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+    {
+        public _IFieldDrawController _FieldDrawController => this.transform.GetComponent<_FieldDrawController>();
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            this._FieldDrawController._Base._FieldDrawBackgroundModerator._ShowFieldDrawShadow();
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            this._FieldDrawController._Base._FieldDrawBackgroundModerator._HideFieldDrawShadow();
+        }
+    }
+}

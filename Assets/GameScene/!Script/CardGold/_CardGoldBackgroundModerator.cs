@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace _cov._CardGold
 {
-    public class _CardGoldBackgorundModerator : MonoBehaviour, _ICardGoldBackgorundModerator
+    public class _CardGoldBackgroundModerator : MonoBehaviour, _ICardGoldBackgroundModerator
     {
         #region --- Variable ---
         // Background reference.
@@ -48,7 +48,7 @@ namespace _cov._CardGold
         }
     }
 
-    public interface _ICardGoldBackgorundModerator
+    public interface _ICardGoldBackgroundModerator
     {
         void _HideCardGoldShadow();
         void _SetBackgroundOfCardGoldApproval();

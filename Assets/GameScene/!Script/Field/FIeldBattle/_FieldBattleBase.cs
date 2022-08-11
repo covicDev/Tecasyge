@@ -8,13 +8,13 @@ namespace _cov._FieldBattle
 
         #region --- References of card minion classes ---
         public _IFieldBattleManager _FieldBattleManage => GameObject.Find("GameManager").transform.GetComponentInChildren<_FieldBattleManager>();
-        public _IFieldBattleBackgorundModerator _FieldBattleBackgorundModerator => this.transform.GetComponent<_FieldBattleBackgorundModerator>();
+        public _IFieldBattleBackgroundModerator _FieldBattleBackgroundModerator => this.transform.GetComponent<_FieldBattleBackgroundModerator>();
         #endregion
     }
     public interface _IFieldBattleBase
     {
         Transform _GameManager { get; }
         _IFieldBattleManager _FieldBattleManage { get; }
-        _IFieldBattleBackgorundModerator _FieldBattleBackgorundModerator { get; }
+        _IFieldBattleBackgroundModerator _FieldBattleBackgroundModerator { get; }
     }
 }

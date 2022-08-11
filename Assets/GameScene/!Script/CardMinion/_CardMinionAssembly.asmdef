@@ -2,7 +2,9 @@
     "name": "_CardMinionAssembly",
     "references": [
         "GUID:03ea209287f631045b0ee30564bef4c8",
-        "GUID:075c1314c1b74f642b41d82120e2ec32"
+        "GUID:075c1314c1b74f642b41d82120e2ec32",
+        "GUID:c36b147e604a81b4bba0ba16b03c6f74",
+        "GUID:aebffe67aecf61c45bb2b0f5af40aec1"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

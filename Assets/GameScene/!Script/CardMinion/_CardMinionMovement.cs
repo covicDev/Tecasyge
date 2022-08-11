@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 namespace _cov._CardMinion
 {
-    [RequireComponent(typeof(_CardMinionController))]
+    //[RequireComponent(typeof(_CardMinionController))]
     public class _CardMinionMovement : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
         public _ICardMinionController _cardMinionController => this.transform.GetComponent<_CardMinionController>();
@@ -62,9 +62,13 @@ namespace _cov._CardMinion
         {
             get
             {
+                // if card minion on field battle -> return.
+                if (this._cardMinionController._Base._CardMinionFieldModerator.__IsCardMinionOnFieldBattle()) return true;
+
                 var data = this._camera.ScreenToWorldPoint(Input.mousePosition);
                 data.z = 0f;
                 this.transform.position = data;
+                
                 return true;
             }
         }

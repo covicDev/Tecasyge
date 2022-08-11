@@ -1,3 +1,15 @@
-﻿{
-	"name": "_CardGoldAssembly"
+{
+    "name": "_CardGoldAssembly",
+    "references": [
+        "GUID:aebffe67aecf61c45bb2b0f5af40aec1"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

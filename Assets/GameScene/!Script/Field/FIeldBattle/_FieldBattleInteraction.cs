@@ -43,7 +43,7 @@ namespace _cov._FieldBattle
         {
             if (eventData?.pointerDrag == null)
             {
-                _fieldBattleController._Base._FieldBattleBackgorundModerator._ShowFieldBattleShadow();
+                _fieldBattleController._Base._FieldBattleBackgroundModerator._ShowFieldBattleShadow();
                 return;
             }
 
@@ -55,7 +55,7 @@ namespace _cov._FieldBattle
                 var cardMinion = eventData.pointerDrag.transform.GetComponent<_cov._CardMinion._CardMinionController>();
                 if (cardMinion._CheckIfCardMinionCanBeTransferedToThisField(this._fieldBattleController._FieldType))
                 {
-                    this._fieldBattleController._Base._FieldBattleBackgorundModerator._SetBackgroundOfFieldBattleApproval();
+                    this._fieldBattleController._Base._FieldBattleBackgroundModerator._SetBackgroundOfFieldBattleApproval();
                 }
             }
 
@@ -64,8 +64,8 @@ namespace _cov._FieldBattle
         public void OnPointerExit(PointerEventData eventData)
         {
 
-            _fieldBattleController._Base._FieldBattleBackgorundModerator._HideFieldBattleShadow();
-            _fieldBattleController._Base._FieldBattleBackgorundModerator._SetBackgroundOfFieldBattleToOriginal();
+            _fieldBattleController._Base._FieldBattleBackgroundModerator._HideFieldBattleShadow();
+            _fieldBattleController._Base._FieldBattleBackgroundModerator._SetBackgroundOfFieldBattleToOriginal();
         }
 
         #endregion

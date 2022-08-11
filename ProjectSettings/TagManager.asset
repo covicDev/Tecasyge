@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - _CardMinion
+  - _CardGold
+  - _FieldBattle
   layers:
   - Default
   - TransparentFX
@@ -42,12 +44,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: _FieldBattle
+  - name: _FieldBattleLayer
     uniqueID: 4036496011
     locked: 0
-  - name: _CardGold
+  - name: _CardGoldLayer
     uniqueID: 1230492467
     locked: 0
-  - name: _CardMinion
+  - name: _CardMinionLayer
     uniqueID: 3570982795
     locked: 0

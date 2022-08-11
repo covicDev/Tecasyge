@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace _cov._FieldBattle
 {
-    public class _FieldBattleBackgorundModerator : MonoBehaviour, _IFieldBattleBackgorundModerator
+    public class _FieldBattleBackgroundModerator : MonoBehaviour, _IFieldBattleBackgroundModerator
     {
         #region --- Variable ---
         // Background reference.
@@ -48,7 +48,7 @@ namespace _cov._FieldBattle
         }
     }
 
-    public interface _IFieldBattleBackgorundModerator
+    public interface _IFieldBattleBackgroundModerator
     {
         void _SetBackgroundOfFieldBattleDenial();
         void _SetBackgroundOfFieldBattleApproval();
