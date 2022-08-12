@@ -8,6 +8,8 @@ TagManager:
   - _CardGold
   - _FieldBattle
   - _FieldDraw
+  - _FieldHand
+  - _FieldDiscard
   layers:
   - Default
   - TransparentFX

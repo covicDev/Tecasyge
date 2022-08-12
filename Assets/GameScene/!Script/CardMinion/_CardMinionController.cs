@@ -75,6 +75,12 @@ namespace _cov._CardMinion
             return this._Base._CardMinionTransferModerator._CheckIfCardMinionCanBeTransferedToThisField(field);
         }
 
+        public bool _DiscardCardMinion()
+        {
+            Destroy(this.gameObject);
+            return true;
+        }
+
         #endregion
 
     }
@@ -83,5 +89,6 @@ namespace _cov._CardMinion
     {
         _ICardMinionBase _Base { get; }
         bool _TransferCardMinionToThisField(Transform parent, Vector3 position, _EField field);
+        bool _DiscardCardMinion();
     }
 }

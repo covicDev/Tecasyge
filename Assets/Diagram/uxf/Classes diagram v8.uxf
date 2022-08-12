@@ -1,0 +1,754 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>4</zoom_level><element><id>UMLClass</id><coordinates><x>376</x><y>24</y><w>164</w><h>84</h></coordinates><panel_attributes>*&lt;&lt;_CameraMovement&gt;&gt;*
+MonoBehaviour
+namespace::_cov._Util._Camera
+-
++ _ICameraController _cameraControllerRef;
+
+-.
+- void Awake();
+- void FixedUpdate();
+- void LateUpdate();
+
++ Vector3 _ClampCamera(Vector3);
++ void _CameraReset();
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>216</x><y>24</y><w>128</w><h>44</h></coordinates><panel_attributes>&lt;&lt;_ICameraMovement&gt;&gt;
+[Interface]
+namespace::_cov._Util._Camera
+-
+_ICameraController _cameraControllerRef { get; }
+void _CameraReset();
+Vector3 _ClampCamera(Vector3);</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>340</x><y>28</y><w>44</w><h>12</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>608</x><y>24</y><w>164</w><h>140</h></coordinates><panel_attributes>*&lt;&lt;_CameraController&gt;*
+MonoBehaviour
+namespace::_cov._Util._Camera
+bg=gray
+-
++ Camera _MainCamera;
+
+[SerializeField] SpriteRenderer _backgroundImage;
+[SerializeField] float _jumpOfCamera;
+
+[SerializeField] private float _minZoomValue;
+[SerializeField] private float _maxZoomValue;
+[SerializeField] private float _normalZoomValue;
+
+[SerializeField] float _arrowNavigationSpeed;
+[SerializeField] Color _arrowNavigationNormalColor;
+[SerializeField] Color _arrowNavigationHighlightColor;
+
+-.
+
++ Vector3 _ClampCamera(Vector3);
+
+/# Set/
++ void _SetBackgroungImage(SpriteRenderer value);</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>536</x><y>28</y><w>80</w><h>12</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>180;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>348</x><y>152</y><w>188</w><h>80</h></coordinates><panel_attributes>*&lt;&lt;_CameraArrowNavigationMovement&gt;&gt;*
+MonoBehaviour
+namespace::_cov._Util._Camera
+-
++ _ICameraController _cameraControllerRef;
+- [SerializeField]  _ECameraArrowNavigationDirection _directionOfTheMove;
+- bool __onHover;
+
+-.
+- void Start();
+- void FixedUpdate();
+- void OnPointerEnter(PointerEventData)
+- void OnPointerExit(PointerEventData)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>532</x><y>32</y><w>84</w><h>140</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>190;10;30;10;30;330;10;330</additional_attributes></element><element><id>UMLClass</id><coordinates><x>216</x><y>176</y><w>96</w><h>44</h></coordinates><panel_attributes>&lt;&lt;_ECameraArrowNavigationDirection&gt;&gt;
+namespace::_cov._Util._Camera
+--
+Left,
+Right,
+Up,
+Down</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>308</x><y>180</y><w>48</w><h>12</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>100;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>372</x><y>272</y><w>164</w><h>72</h></coordinates><panel_attributes>*&lt;&lt;_CameraZoomMovement&gt;&gt;*
+MonoBehaviour
+namespace::_cov._Util._Camera
+-
++ _ICameraController _cameraControllerRef'
+
+-.
++ void _CameraZoomIn();
++ void _CameraZoomOut();
++ void _CameraZoomReset();
+
+- _setCameraZoom(float size);</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>532</x><y>36</y><w>84</w><h>252</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>190;10;40;10;40;610;10;610</additional_attributes></element><element><id>UMLClass</id><coordinates><x>212</x><y>272</y><w>120</w><h>52</h></coordinates><panel_attributes>&lt;&lt;_ICameraZoomMovement&gt;&gt;
+[Interface]
+namespace::_cov._Util._Camera
+-
+_ICameraController _cameraControllerRef { get; }
+void _CameraZoomIn();
+void _CameraZoomOut();
+void _CameraZoomReset();</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>328</x><y>280</y><w>52</w><h>12</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;110;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>604</x><y>196</y><w>172</w><h>128</h></coordinates><panel_attributes>&lt;&lt;_ICameraController&gt;&gt;
+[Interface]
+namespace::_cov._Util._Camera
+-
+        Color _ArrowNavigationHighlightColor { get; }
+        Color _ArrowNavigationNormalColor { get; }
+        float _ArrowNavigationSpeed { get; }
+
+        SpriteRenderer _BackgroundImage { get; }
+        void _SetBackgroungImage(SpriteRenderer value);
+
+        float _JumpOfCamera { get; }
+        Camera _MainCamera { get; }
+
+        float _MaxZoomValue { get; }
+        float _MinZoomValue { get; }
+        float _NormalZoomValue { get; }
+
+        Vector3 _ClampCamera(Vector3 targetPosition);</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>160</y><w>12</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>588</x><y>652</y><w>208</w><h>84</h></coordinates><panel_attributes>*&lt;&lt;_CardMinionController&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardMinion
+DesignPattern::Fasade
+bg=gray
+-
++ _ICardMinionBase _Base;
+-.
++ bool _TransferCardMinionToThisField(Transform parent, Vector3 position, _EField field);
++ bool _CheckIfCardMinionCanBeTransferedToThisField(_EField field);
++ bool _DiscardCardMinion();
+
+- void _prepareCardGraphicAdapter();</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>620</x><y>508</y><w>176</w><h>108</h></coordinates><panel_attributes>*&lt;&lt;_CardMinionBase&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardMinion
+DesignPattern::Fasade
+bg=gray
+-
++ Transform _CardGoldParent;
++ _ICardMinionManager _CardMinionManager;
++ _ICardMinionGraphicAdapter _CardMinionGraphicAdapter;
++ _ICardMinionStatsModerator _CardMinionStatsModerator;
++ _ICardMinionBackgroundModerator _CardMinionBackgroundModerator;
++ _ICardMinionTransferModerator _CardMinionTransferModerator;
++ _ICardMinionFieldModerator _CardMinionFieldModerator;
+-.
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>608</x><y>404</y><w>192</w><h>72</h></coordinates><panel_attributes>&lt;&lt;_ICardMinionBase&gt;&gt;
+[Interface]
+Namespace::_cov._CardMinion
+-
+ Transform _CardGoldParent { get; }
+_ICardMinionManager _CardMinionManager { get; }
+_ICardMinionGraphicAdapter _CardMinionGraphicAdapter { get; }
+_ICardMinionStatsModerator _CardMinionStatsModerator { get; }
+_ICardMinionBackgroundModerator _CardMinionBackgroundModerator { get; }
+_ICardMinionTransferModerator _CardMinionTransferModerator { get; }
+_ICardMinionFieldModerator _CardMinionFieldModerator { get; }</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>696</x><y>472</y><w>12</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>572</x><y>516</y><w>252</w><h>176</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>40;420;10;420;10;300;610;300;610;10;560;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>588</x><y>772</y><w>204</w><h>56</h></coordinates><panel_attributes>&lt;&lt;_ICardMinionController&gt;&gt;
+[Interface]
+Namespace::_cov._CardMinion
+-
+_ICardMinionBase _Base { get; }
+bool _TransferCardMinionToThisField(Transform parent, Vector3 position, _EField field);
+bool _CheckIfCardMinionCanBeTransferedToThisField(_EField field);
+bool _DiscardCardMinion();</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>688</x><y>732</y><w>12</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;100;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>24</x><y>796</y><w>88</w><h>48</h></coordinates><panel_attributes>&lt;&lt;_SCardMinionStruct&gt;&gt;
+[Struct]
+Namespace::_cov._CardMinion
+--
++ _Image: Sprite
++ _Attack: int
++ _Life: int
++ _Armor: int
++ _Gold: int </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>852</x><y>636</y><w>164</w><h>140</h></coordinates><panel_attributes>*&lt;&lt;_CardMinionMovement&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardMinion
+bg=gray
+-
++ _ICardMinionController _cardMinionController
+
+-.
++ void OnBeginDrag(PointerEventData eventData);
++ void OnDrag(PointerEventData eventData);
++ void OnEndDrag(PointerEventData eventData);
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>356</x><y>532</y><w>148</w><h>76</h></coordinates><panel_attributes>*&lt;&lt;_CardMinionManager&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardMinion
+bg=gray
+-
++ Camera _CameraMain;
++ _TableSpriteNumber _TableOfMinionSprites;
++ _ICardMinionStatsMaker _CardMinionStatsMaker;
+
+-.
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>500</x><y>536</y><w>128</w><h>12</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>300;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>360</x><y>464</y><w>144</w><h>44</h></coordinates><panel_attributes>&lt;&lt;_ICardMinionManager&gt;&gt;
+[Interface]
+Namespace::_cov._CardMinion
+-
+Camera _CameraMain { get; }
+_TableSpriteNumber _TableOfMinionSprites { get; }
+_ICardMinionStatsMaker _CardMinionStatsMaker { get; }</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>436</x><y>504</y><w>12</w><h>36</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>792</x><y>656</y><w>68</w><h>12</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>150;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>348</x><y>636</y><w>164</w><h>140</h></coordinates><panel_attributes>*&lt;&lt;_CardMinionGraphicAdapter&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardMinion
+bg=gray
+-
+- _SCardMinionStruct _cardMinionBasisStats;
+- _SCardMinionStruct _cardMinionCurrentStats;
+
+-.
++ void _FirstRender();
++ void _Render();
++ void _UpdateStats();
++ void _SetStartValues(_SCardMinionStruct _struct);
+
+/# Basic sets/
++ void _SetNormalNumber(in Sprite[] sprites);
++ void _SetUnderNumber(in Sprite[] sprites);
++ void _SetOverNumber(in Sprite[] sprites);
++ void _SetWrongNumber(in Sprite[] sprites);
++ void _SetReferencesToValueSprites(GameObject[..]);</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>508</x><y>540</y><w>120</w><h>112</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>280;10;30;10;30;260;10;260</additional_attributes></element><element><id>UMLClass</id><coordinates><x>164</x><y>636</y><w>136</w><h>116</h></coordinates><panel_attributes>&lt;&lt;_ICardMinionGraphicAdapter&gt;&gt;
+[Interface]
+Namespace::_cov._CardMinion
+-
+void _FirstRender();
+void _Render();
+void _UpdateStats();
+
+/# Basic sets/
+void _SetStartValues(_SCardMinionStruct _struct);
+void _SetNormalNumber(in Sprite[] sprites);
+void _SetUnderNumber(in Sprite[] sprites);
+void _SetOverNumber(in Sprite[] sprites);
+void _SetWrongNumber(in Sprite[] sprites);
+void _SetReferencesToValueSprites(GameObject[..]);</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>296</x><y>644</y><w>60</w><h>12</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;130;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>152</x><y>852</y><w>164</w><h>140</h></coordinates><panel_attributes>*&lt;&lt;_CardMinionStatsModerator&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardMinion
+bg=gray
+-
+- _SCardMinionStruct _baseStats;
+-_SCardMinionStruct _currentStats;
+-.
+
++ bool _CheckIfGoldCardCanBeGivenToThisMinion();
+
++_SCardMinionStruct _GetCurrentStatsStruct();
++ void _PrepareCardMinionBasisStats()
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>164</x><y>776</y><w>136</w><h>56</h></coordinates><panel_attributes>&lt;&lt;_ICardMinionStatsModerator&gt;&gt;
+[Interface]
+Namespace::_cov._CardMinion
+-
+_SCardMinionStruct _GetCurrentStatsStruct();
+void _PrepareCardMinionBasisStats();
+bool _CheckIfGoldCardCanBeGivenToThisMinion();</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>228</x><y>828</y><w>12</w><h>32</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>312</x><y>548</y><w>316</w><h>320</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>770;10;550;10;550;780;10;780</additional_attributes></element><element><id>UMLClass</id><coordinates><x>200</x><y>484</y><w>100</w><h>44</h></coordinates><panel_attributes>&lt;&lt;_TableSpriteNumber&gt;&gt;
+Namespace::_cov._CardMinion
+--
+[SerializeField] Sprite[] _NormalNumber;
+[SerializeField] Sprite[] _UnderNumber;
+[SerializeField] Sprite[] _OverNumber;
+[SerializeField] Sprite[] _WrongNumber;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>164</x><y>452</y><w>344</w><h>164</h></coordinates><panel_attributes>lt=.
+GameManager</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>108</x><y>660</y><w>248</w><h>148</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>600;10;510;10;510;260;70;260;70;350;10;350</additional_attributes></element><element><id>Relation</id><coordinates><x>108</x><y>800</y><w>52</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>110;200;70;200;70;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>200</x><y>536</y><w>100</w><h>28</h></coordinates><panel_attributes>&lt;&lt;_TableSpriteMinion&gt;&gt;
+Namespace::_cov._CardMinion
+--
+[SerializeField] Sprite[] _spritesOfMinons;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>348</x><y>792</y><w>164</w><h>56</h></coordinates><panel_attributes>Use..
+Prepare:
+1. _prepareCardGraphicAdapter(); (Controller)
+
+Act:
+1. _UpdateStats(_SCardMinionStruct currentStats);
+2. _Render();</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>424</x><y>772</y><w>12</w><h>28</h></coordinates><panel_attributes>lt=-
+fg=gray
+</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLNote</id><coordinates><x>152</x><y>1008</y><w>164</w><h>56</h></coordinates><panel_attributes>Use..
+Prepare:
+1. void _PrepareCardMinionBasisStats();
+
+Act:</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>228</x><y>988</y><w>12</w><h>28</h></coordinates><panel_attributes>lt=-
+fg=gray
+</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>200</x><y>572</y><w>128</w><h>36</h></coordinates><panel_attributes>*&lt;&lt;_CardMinionStatsMaker&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardMinion._CardMinionMaker
+-
+-.
++ _SCardMinionStruct _MakeMinion(int tierLever);
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>180</x><y>540</y><w>28</w><h>52</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>50;110;10;110;10;10;50;10</additional_attributes></element><element><id>Relation</id><coordinates><x>296</x><y>484</y><w>68</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>150;200;40;200;40;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>324</x><y>564</y><w>40</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>80;10;30;10;30;40;10;40</additional_attributes></element><element><id>UMLClass</id><coordinates><x>852</x><y>800</y><w>160</w><h>76</h></coordinates><panel_attributes>*&lt;&lt;_CardMinionInteraction&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardMinion
+bg=gray
+-
++ _ICardMinionController _cardMinionController;
+
+-.
++ OnDrop(PointerEventData eventData);
++ OnPointerEnter(PointerEventData eventData);
++ OnPointerExit(PointerEventData eventData);
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>792</x><y>660</y><w>68</w><h>172</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>150;410;70;410;70;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>356</x><y>876</y><w>172</w><h>88</h></coordinates><panel_attributes>*&lt;&lt;_CardMinionBackgroundModerator&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardMinion
+bg=gray
+-
+- Image _cardMinionBackgroundImage;
+
+-.
+- void Start();
+
++ void _SetBackgroundOfCardMinionDenial();
++ void _SetBackgroundOfCardMinionApproval();
++ void _SetBackgroundOfCardMinionToOriginal();
++ void _SetBackgroundOfCardMinionToGray();
+
++ void _ShowCardMinionShadow();
++ void _HideCardMinionShadow();</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>524</x><y>552</y><w>104</w><h>340</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>240;10;50;10;50;830;10;830</additional_attributes></element><element><id>UMLClass</id><coordinates><x>380</x><y>1008</y><w>136</w><h>64</h></coordinates><panel_attributes>&lt;&lt;_ICardMinionBackgroundModerator&gt;&gt;
+[Interface]
+Namespace::_cov._CardMinion
+-
+void _SetBackgroundOfCardMinionDenial();
+void _SetBackgroundOfCardMinionApproval();
+void _SetBackgroundOfCardMinionToOriginal();
+void _SetBackgroundOfCardMinionToGray();
+
+void _ShowCardMinionShadow();
+void _HideCardMinionShadow();</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>444</x><y>960</y><w>12</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>152</x><y>1076</y><w>136</w><h>44</h></coordinates><panel_attributes>&lt;&lt;_SCardMinonName&gt;&gt;
+[Struct]
+Namespace::_cov._CardMinion
+--
++ static string _BackgroundName = "Background";
++ static string _AddonName = "Addon";
++ static string _ShadowName = "Shadow";</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>284</x><y>896</y><w>80</w><h>196</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>180;10;130;10;130;470;10;470</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1252</x><y>536</y><w>188</w><h>56</h></coordinates><panel_attributes>*&lt;&lt;_FieldBattleManager&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._FieldBattle
+bg=gray
+-
+[SerializeField] Sprite _spriteFieldBattleToBuy;
+[SerializeField]  Sprite _spriteFieldBattle;
+-.
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1544</x><y>668</y><w>148</w><h>56</h></coordinates><panel_attributes>*&lt;&lt;_FieldBattleController&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._FieldBattle
+DesignPattern::Fasade
+bg=gray
+-
++ _IFieldBattleBase _Base;
++ _Enum._EField _FieldType;
+-.
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1544</x><y>516</y><w>188</w><h>56</h></coordinates><panel_attributes>*&lt;&lt;_FieldBattleBase&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._FieldBattle
+DesignPattern::Fasade
+bg=gray
+-
++ Transform _GameManager;
++ _IFieldBattleManager _FieldBattleManage;
++ _IFieldBattleBackgroundModerator _FieldBattleBackgroundModerator;
+-.
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1104</x><y>428</y><w>120</w><h>44</h></coordinates><panel_attributes>&lt;&lt;_SFieldBattleName&gt;&gt;
+[Struct]
+Namespace::_cov._FieldBattle
+--
++ static string _BackgroundName = "Background";
++ static string _AddonName = "Addon";
++ static string _ShadowName = "Shadow";</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1252</x><y>644</y><w>176</w><h>88</h></coordinates><panel_attributes>*&lt;&lt;_FieldBattleBackgroundModerator&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._FieldBattle
+bg=gray
+-
+- Image _cardMinionBackgroundImage;
+
+-.
+- void Start();
+
++ void _SetBackgroundOfCardMinionDenial();
++ void _SetBackgroundOfCardMinionApproval();
++ void _SetBackgroundOfCardMinionToOriginal();
+
++ void _ShowCardMinionShadow();
++ void _HideCardMinionShadow();</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1784</x><y>676</y><w>164</w><h>68</h></coordinates><panel_attributes>*&lt;&lt;_FieldBattleInteraction&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._FieldBattle
+bg=gray
+-
++ _ICardMinionController _cardMinionController
+
+-.
++ void OnBeginDrag(PointerEventData eventData);
++ void OnDrag(PointerEventData eventData);
++ void OnEndDrag(PointerEventData eventData);
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1540</x><y>428</y><w>192</w><h>52</h></coordinates><panel_attributes>&lt;&lt;_IFieldBattleBase&gt;&gt;
+[Interface]
+Namespace::_cov._FieldBattle
+-
+Transform _GameManager { get; }
+_IFieldBattleManager _FieldBattleManage { get; }
+_IFieldBattleBackgroundModerator _FieldBattleBackgroundModerator { get; }</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1544</x><y>748</y><w>148</w><h>52</h></coordinates><panel_attributes>&lt;&lt;_IFieldBattleController&gt;&gt;
+[Interface]
+Namespace::_cov._FieldBattle
+-
+_IFieldBattleBase _Base { get; }
+_Enum._EField _FieldType { get; }</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1620</x><y>720</y><w>12</w><h>36</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1616</x><y>476</y><w>12</w><h>48</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1252</x><y>428</y><w>188</w><h>64</h></coordinates><panel_attributes>&lt;&lt;_IFieldBattleManager&gt;&gt;
+[Interface]
+Namespace::_cov._FieldBattle
+-
+Camera _CameraMain { get; }
+_TableSpriteNumber _TableOfMinionSprites { get; }
+_IFieldBattleManager _FieldBattleManage { get; }
+_IFieldBattleBackgroundModerator _FieldBattleBackgroundModerator{ get; }</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1344</x><y>488</y><w>12</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>1436</x><y>544</y><w>116</w><h>12</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>270;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1620</x><y>568</y><w>12</w><h>108</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;250;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1688</x><y>680</y><w>104</w><h>12</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>240;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1424</x><y>548</y><w>128</w><h>116</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>300;10;60;10;60;270;10;270</additional_attributes></element><element><id>Relation</id><coordinates><x>1220</x><y>432</y><w>40</w><h>244</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>80;590;30;590;30;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>920</y><w>216</w><h>88</h></coordinates><panel_attributes>*&lt;&lt;_CardMinionTransferModerator&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardMinion
+bg=gray
+-
++ _ICardMinionController _CardMinionController;
+-.
+
++ bool _TransferCardMinionToThisField(Transform parent, Vector3 position, _EField field);
++ bool _CheckIfCardMinionCanBeTransferedToThisField(_EField field);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>1048</y><w>216</w><h>64</h></coordinates><panel_attributes>&lt;&lt;_ICardMinionTransferModerator&gt;&gt;
+[Interface]
+Namespace::_cov._CardMinion
+-
+_ICardMinionController _CardMinionController { get; }
+bool _TransferCardMinionToThisField(Transform parent, Vector3 position, _EField field);
+bool _CheckIfCardMinionCanBeTransferedToThisField(_EField field)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>676</x><y>1004</y><w>12</w><h>52</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>552</x><y>560</y><w>76</w><h>376</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>170;10;10;10;10;920;70;920</additional_attributes></element><element><id>UMLClass</id><coordinates><x>968</x><y>28</y><w>204</w><h>108</h></coordinates><panel_attributes>&lt;&lt;_SName&gt;&gt;
+fg=green
+[Struct]
+Namespace::_cov._Stuct
+--
+        public static string _TagCardMinion =&gt; "_CardMinion";
+        public static string _TagCardGold =&gt; "_CardGold";
+        public static string _TagFieldBattle =&gt; "_FieldBattle";
+        public static string _TagFieldDraw =&gt; "_FieldDraw";
+
+        public static string _SortingLayerCardMinion =&gt; "_CardMinionLayer";
+        public static string _SortingLayerCardGold=&gt; "_CardGoldLayer";
+        public static string _SortingLayerFieldBattle =&gt; "_FieldBattleLayer";
+
+        public static string _ResourceCardPatch =&gt; "Prefab/Card/";
+        public static string _ResourceCardMinion =&gt; _ResourceCardPatch + "CardMinion";
+        public static string _ResourceCardGold =&gt; _ResourceCardPatch + "CardGold";
+        public static string _ResourceFieldPile =&gt; _ResourceCardPatch + "FieldPile";</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>804</x><y>8</y><w>380</w><h>168</h></coordinates><panel_attributes>lt=.
+Common</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>832</x><y>28</y><w>108</w><h>64</h></coordinates><panel_attributes>&lt;&lt;_EField&gt;&gt;
+fg=green
+[Enum]
+namespace _cov._Enum
+--
+        Null,
+        Pile,
+        Hand,
+        Battlefield,
+        Discard,
+        Graveyard</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1008</x><y>740</y><w>880</w><h>84</h></coordinates><panel_attributes>lt=-
+fg=orange
+&lt; _TransferCardMinionToThisField() &gt;
+</panel_attributes><additional_attributes>10;180;2180;180;2180;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1388</x><y>1040</y><w>180</w><h>108</h></coordinates><panel_attributes>*&lt;&lt;_CardGoldBase&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardGold
+DesignPattern::Fasade
+bg=gray
+-
++ Transform _GameManager;
++ _ICardGoldBackgroundModerator CardGoldBackgroundModerator;
++ _ICardGoldManager _CardGoldManager;
++ _EField _CurrentField;
+-.
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1648</x><y>1024</y><w>208</w><h>76</h></coordinates><panel_attributes>*&lt;&lt;_CardGoldController&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardGold
+DesignPattern::Fasade
+bg=gray
+-
++ _ICardGoldBase _Base;
++ bool _TransferCardGoldToThisField(Transform parent, Vector3 position, _EField field)
++ bool _DiscardCardGold();</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1388</x><y>944</y><w>192</w><h>56</h></coordinates><panel_attributes>&lt;&lt;_ICardGoldBase&gt;&gt;&gt;
+[Interface]
+Namespace::_cov._CardGold
+-
+        Transform _GameManager { get; }
+        _ICardGoldBackgorundModerator _CardGoldBackgorundModerator { get; }
+        _ICardGoldManager _CardGoldManager { get; }
+        _EField _CurrentField { get; set; }</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1476</x><y>996</y><w>12</w><h>52</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1648</x><y>944</y><w>208</w><h>44</h></coordinates><panel_attributes>&lt;&lt;_ICardGoldController&gt;&gt;
+[Interface]
+Namespace::_cov._CardGold
+-
+_ICardGoldBase _Base { get; }
+bool _TransferCardGoldToThisField(Transform parent, Vector3 position, _EField field);
++ bool _DiscardCardGold();</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1752</x><y>984</y><w>12</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>1564</x><y>1052</y><w>92</w><h>12</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>210;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1144</x><y>940</y><w>172</w><h>88</h></coordinates><panel_attributes>*&lt;&lt;_CardGoldBackgroundModerator&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardGold
+bg=gray
+-
+- Image _cardGoldBackgroundImage;
+- CanvasGroup _cardGoldShadowImageCanvas;
+
+-.
++ void _HideCardGoldShadow();
++ void _SetBackgroundOfCardGoldApproval();
++ void _SetBackgroundOfCardGoldDenial();
++ void _SetBackgroundOfCardGoldToOriginal();
++ void _SetBackgroundOfCardGoldToGray();
++ void _ShowCardGoldShadow();</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1144</x><y>1156</y><w>136</w><h>44</h></coordinates><panel_attributes>&lt;&lt;_SCardGoldName&gt;&gt;
+[Struct]
+Namespace::_cov._CardGold
+--
++ static string _BackgroundName = "Background";
++ static string _ShadowName = "Shadow";</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1224</x><y>1024</y><w>12</w><h>52</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1144</x><y>1068</y><w>176</w><h>64</h></coordinates><panel_attributes>&lt;&lt;_ICardGoldBackgroundModerator&gt;&gt;
+[Interface]
+Namespace::_cov._CardGold
+-
+        void _HideCardGoldShadow();
+        void _SetBackgroundOfCardGoldApproval();
+        void _SetBackgroundOfCardGoldDenial();
+        void _SetBackgroundOfCardGoldToOriginal();
+        void _SetBackgroundOfCardGoldToGray();
+        void _ShowCardGoldShadow();</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1108</x><y>964</y><w>44</w><h>208</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>90;10;10;10;10;500;90;500</additional_attributes></element><element><id>Relation</id><coordinates><x>1312</x><y>948</y><w>84</w><h>132</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>190;310;60;310;60;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1656</x><y>1160</y><w>148</w><h>76</h></coordinates><panel_attributes>*&lt;&lt;_CardGoldManager&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardGold
+bg=gray
+-
++ Camera _CameraMain;
+
+
+-.
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1660</x><y>1268</y><w>144</w><h>44</h></coordinates><panel_attributes>&lt;&lt;_ICardGoldManager&gt;&gt;
+[Interface]
+Namespace::_cov._CardGold
+-
+Camera _CameraMain { get; }
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1728</x><y>1232</y><w>12</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1464</x><y>1144</y><w>200</w><h>32</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60;480;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1940</x><y>1160</y><w>160</w><h>76</h></coordinates><panel_attributes>*&lt;&lt;_CardGoldInteraction&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardGold
+bg=gray
+-
++ _ICardGoldController _CardGoldController;
+
+-.
++ OnDrop(PointerEventData eventData);
++ OnPointerEnter(PointerEventData eventData);
++ OnPointerExit(PointerEventData eventData);
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1852</x><y>1060</y><w>96</w><h>116</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;70;10;70;270;220;270</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1936</x><y>1044</y><w>164</w><h>80</h></coordinates><panel_attributes>*&lt;&lt;_CardGoldInteraction&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardGold
+bg=gray
+-
++ _ICardGoldController _CardGoldController;
+
+-.
++ void OnBeginDrag(PointerEventData eventData);
++ void OnDrag(PointerEventData eventData);
++ void OnEndDrag(PointerEventData eventData);
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1852</x><y>1052</y><w>92</w><h>12</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;210;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>688</x><y>1144</y><w>108</w><h>72</h></coordinates><panel_attributes>*&lt;&lt;_CardMinionFieldModerator&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardMinion
+bg=gray
+-
+
+-.
++ _EField _GetCurrentField();
++ bool _SetCurrentFieldTo(_EField field);
++ bool __IsCardMinionOnFieldBattle();</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>516</x><y>1144</y><w>120</w><h>64</h></coordinates><panel_attributes>&lt;&lt;_ICardMinionFieldModerator&gt;&gt;
+[Interface]
+Namespace::_cov._CardMinion
+-
+        _EField _GetCurrentField();
+        bool _SetCurrentFieldTo(_EField field);
+        bool __IsCardMinionOnFieldBattle();</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>632</x><y>1148</y><w>64</w><h>12</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;140;10</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>564</y><w>268</w><h>600</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>150;10;10;10;10;860;650;860;650;1480;590;1480</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2472</x><y>656</y><w>144</w><h>84</h></coordinates><panel_attributes>*&lt;&lt;_FieldDrawController&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._FieldDraw
+DesignPattern::Fasade
+bg=gray
+-
++ _IFieldDrawBase _Base;
+-.
+
++ void _GetNextCard();
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>196</x><y>0</y><w>592</w><h>360</h></coordinates><panel_attributes>Assembly Definition::_CameraAssembly
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2468</x><y>488</y><w>148</w><h>112</h></coordinates><panel_attributes>*&lt;&lt;_FieldDrawBase&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._FieldDraw
+DesignPattern::Fasade
+bg=gray
+-
++ Transform _GameManager { get; }
+
++ _IFieldDrawManager _FieldDrawManager { get; }
++ _IFieldDrawBackgroundModerator _FieldDrawBackgroundModerator { get; }
++ _IFieldDrawPileModerator _FieldDrawPileModerator { get; }
+
++ GameObject _FieldPilePrefab { get; }
++ GameObject _CardMinionPrefab { get; }
++ GameObject _CardGoldPrefab { get; }
+
++  _EField _FieldType { get; }
+-.
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2680</x><y>644</y><w>148</w><h>64</h></coordinates><panel_attributes>*&lt;&lt;_FieldDrawInteraction&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._FieldDraw
+bg=gray
+-
+
+-.
++ void OnPointerClick(PointerEventData eventData);
++ void OnPointerEnter(PointerEventData eventData);
++ void OnPointerExit(PointerEventData eventData);
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2224</x><y>516</y><w>148</w><h>72</h></coordinates><panel_attributes>*&lt;&lt;_FieldDrawBackgorundModerator&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._FieldDraw
+bg=gray
+-
+
+-.
++ void _SetBackgroundOfFieldDrawDenial();
++ void _SetBackgroundOfFieldDrawApproval();
++ void _SetBackgroundOfFieldDrawToOriginal();
++ void _ShowFieldDrawShadow();
++ void _HideFieldDrawShadow();</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2224</x><y>724</y><w>120</w><h>44</h></coordinates><panel_attributes>&lt;&lt;_SFieldDrawName&gt;&gt;
+[Struct]
+Namespace::_cov._FieldDraw
+--
++ static string _BackgroundName = "Background";
++ static string _ShadowName = "Shadow";</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>0</x><y>380</y><w>1032</w><h>880</h></coordinates><panel_attributes>Assembly Definition::_CardMinionAssembly
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1084</x><y>900</y><w>1044</w><h>432</h></coordinates><panel_attributes>Assembly Definition::_CardGoldAssembly
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2196</x><y>536</y><w>36</w><h>204</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>70;10;10;10;10;490;70;490</additional_attributes></element><element><id>Relation</id><coordinates><x>2368</x><y>524</y><w>108</w><h>12</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>250;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>2444</x><y>496</y><w>204</w><h>200</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>70;480;10;480;10;370;490;370;490;10;430;10</additional_attributes></element><element><id>Relation</id><coordinates><x>2612</x><y>664</y><w>76</w><h>12</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>170;10;10;10</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1088</x><y>384</y><w>880</w><h>460</h></coordinates><panel_attributes>Assembly Definition::_FieldBattleAssembly
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2232</x><y>352</y><w>140</w><h>60</h></coordinates><panel_attributes>*&lt;&lt;_FieldPileController&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._FieldDraw
+DesignPattern::Fasade
+bg=gray
+-
+
+-.
++ Transform _GetFieldPileAddonReference();
++ bool __IsFieldPileFree();
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2524</x><y>1036</y><w>144</w><h>108</h></coordinates><panel_attributes>*&lt;&lt;_FieldDiscardController&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._FieldDiscard
+DesignPattern::Fasade
+bg=gray
+-
++ _IFieldDiscardBase _Base { get; }
+-.
+
++ bool _DestroyCardMinion(GameObject card);
++ bool _DestroyCardGold(GameObject card);
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1348</x><y>1220</y><w>56</w><h>20</h></coordinates><panel_attributes>From Common:
+_EField
+fg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>808</x><y>12</y><w>16</w><h>16</h></coordinates><panel_attributes>C
+type=initial
+fg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>1340</x><y>1212</y><w>8</w><h>8</h></coordinates><panel_attributes>C
+type=initial
+fg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1368</x><y>1084</y><w>28</w><h>144</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+fg=green</panel_attributes><additional_attributes>50;10;10;10;10;340</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1716</x><y>772</y><w>56</w><h>20</h></coordinates><panel_attributes>From Common:
+_SName
+fg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>1708</x><y>764</y><w>8</w><h>8</h></coordinates><panel_attributes>C
+type=initial
+fg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1736</x><y>716</y><w>56</w><h>64</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+fg=green</panel_attributes><additional_attributes>120;10;10;10;10;140</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1448</x><y>696</y><w>56</w><h>20</h></coordinates><panel_attributes>From Common:
+_EField
+fg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>1440</x><y>688</y><w>8</w><h>8</h></coordinates><panel_attributes>C
+type=initial
+fg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1500</x><y>700</y><w>52</w><h>12</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+fg=green</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>1224</y><w>56</w><h>20</h></coordinates><panel_attributes>From Common:
+_EField
+fg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>572</x><y>1216</y><w>8</w><h>8</h></coordinates><panel_attributes>C
+type=initial
+fg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>632</x><y>1172</y><w>64</w><h>68</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+fg=green</panel_attributes><additional_attributes>140;10;50;10;50;150;10;150</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2472</x><y>772</y><w>148</w><h>44</h></coordinates><panel_attributes>&lt;&lt;_IFieldDrawController&gt;&gt;
+[Interface]
+Namespace::_cov._FieldDraw
+-
+        _IFieldDrawBase _Base { get; }
+        void _GetNextCard();</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2540</x><y>736</y><w>12</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2468</x><y>348</y><w>148</w><h>108</h></coordinates><panel_attributes>&lt;&lt;_IFieldDrawController&gt;&gt;
+[Interface]
+Namespace::_cov._FieldDraw
+-
+        Transform _GameManager { get; }
+
+        _IFieldDrawManager _FieldDrawManager { get; }
+        _IFieldDrawBackgroundModerator _FieldDrawBackgroundModerator { get; }
+        _IFieldDrawPileModerator _FieldDrawPileModerator { get; }
+
+        GameObject _FieldPilePrefab { get; }
+        GameObject _CardMinionPrefab { get; }
+        GameObject _CardGoldPrefab { get; }
+
+        _EField _FieldType { get; }</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2536</x><y>452</y><w>12</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>2392</x><y>604</y><w>8</w><h>8</h></coordinates><panel_attributes>C
+type=initial
+fg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2400</x><y>612</y><w>56</w><h>20</h></coordinates><panel_attributes>From Common:
+_EField
+fg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2424</x><y>576</y><w>52</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+fg=green</panel_attributes><additional_attributes>110;10;10;10;10;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2224</x><y>628</y><w>148</w><h>64</h></coordinates><panel_attributes>&lt;&lt;_IFieldDrawBackgorundModerator&gt;
+[Interface]
+Namespace::_cov._FieldDraw
+-
+        void _SetBackgroundOfFieldDrawDenial();
+        void _SetBackgroundOfFieldDrawApproval();
+        void _SetBackgroundOfFieldDrawToOriginal();
+        void _ShowFieldDrawShadow();
+        void _HideFieldDrawShadow();</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2292</x><y>584</y><w>12</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2228</x><y>448</y><w>144</w><h>44</h></coordinates><panel_attributes>&lt;&lt;_IFieldPileController&gt;
+[Interface]
+Namespace::_cov._FieldDraw
+-
+        Transform _GetFieldPileAddonReference();
+        bool __IsFieldPileFree();</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2296</x><y>404</y><w>12</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;100;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>2368</x><y>360</y><w>108</w><h>172</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>250;410;50;410;50;10;10;10</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>2176</x><y>328</y><w>664</w><h>512</h></coordinates><panel_attributes>Assembly Definition::_FieldDrawAssembly
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2720</x><y>1020</y><w>144</w><h>108</h></coordinates><panel_attributes>*&lt;&lt; _FieldDiscardInteraction&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._FieldDiscard
+DesignPattern::Fasade
+bg=gray
+-
+
+-.
++ void OnDrop(PointerEventData eventData);
++ void OnPointerEnter(PointerEventData eventData)
++ void OnPointerExit(PointerEventData eventData);
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2664</x><y>1048</y><w>64</w><h>12</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>140;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2524</x><y>1184</y><w>144</w><h>44</h></coordinates><panel_attributes>&lt;&lt;_IFieldDiscardController&gt;&gt;
+[Interface]
+Namespace::_cov._FieldDiscard
+-
+        _IFieldDiscardBase _Base { get; }
+        bool _DestroyCardMinion(GameObject card);
+        bool _DestroyCardGold(GameObject card);</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2592</x><y>1140</y><w>12</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;100;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2332</x><y>1052</y><w>144</w><h>108</h></coordinates><panel_attributes>*&lt;&lt;_FieldDiscardController&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._FieldDiscard
+DesignPattern::Fasade
+bg=gray
+-
++ _IFieldDiscardBase _Base;
++ Transform _GameManager;
++ _IFieldDiscardBackgroundModerator _FieldDiscardBackgroundModerator;
++ _EField _FieldType;
+-.</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2472</x><y>1060</y><w>60</w><h>12</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>130;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2332</x><y>1192</y><w>144</w><h>44</h></coordinates><panel_attributes>&lt;&lt;_IFieldDiscardController&gt;&gt;
+[Interface]
+Namespace::_cov._FieldDiscard
+-
+        Transform _GameManager { get; }
+        _IFieldDiscardBackgroundModerator _FieldDiscardBackgroundModerator { get; }
+        _EField _FieldType { get; }</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2404</x><y>1152</y><w>12</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2332</x><y>1388</y><w>176</w><h>64</h></coordinates><panel_attributes>&lt;&lt;_ICardGoldBackgroundModerator&gt;&gt;
+[Interface]
+Namespace::_cov._CardDiscard
+-
+        void _SetBackgroundOfFieldDiscardDenial();
+        void _SetBackgroundOfFieldDiscardApproval();
+        void _SetBackgroundOfFieldDiscardToOriginal();
+        void _ShowFieldDiscardShadow();
+        void _HideFieldDiscardShadow();</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2332</x><y>1268</y><w>172</w><h>88</h></coordinates><panel_attributes>*&lt;&lt;_FieldDiscardBackgroundModerator&gt;&gt;*
+MonoBehaviour
+Namespace::_cov._CardDiscard
+bg=gray
+-
+
+-.
++ void _SetBackgroundOfFieldDiscardDenial();
++ void _SetBackgroundOfFieldDiscardApproval();
++ void _SetBackgroundOfFieldDiscardToOriginal();
++ void _ShowFieldDiscardShadow();
++ void _HideFieldDiscardShadow();</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2412</x><y>1352</y><w>12</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>2308</x><y>1092</y><w>32</w><h>196</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>60;10;10;10;10;470;60;470</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>2288</x><y>988</y><w>620</w><h>484</h></coordinates><panel_attributes>Assembly Definition::_FieldDiscardAssembly
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2332</x><y>1020</y><w>56</w><h>20</h></coordinates><panel_attributes>From Common:
+_EField
+fg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2308</x><y>1024</y><w>32</w><h>76</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+fg=green</panel_attributes><additional_attributes>60;170;10;170;10;10;60;10</additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>2324</x><y>1012</y><w>8</w><h>8</h></coordinates><panel_attributes>C
+type=initial
+fg=green</panel_attributes><additional_attributes></additional_attributes></element></diagram>

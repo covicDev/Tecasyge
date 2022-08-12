@@ -9,16 +9,19 @@ namespace _cov._FieldDraw
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            this._FieldDrawController._Base._FieldDrawBackgroundModerator._SetBackgroundOfFieldDrawToOriginal();
             this._FieldDrawController._GetNextCard();
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            this._FieldDrawController._Base._FieldDrawBackgroundModerator._SetBackgroundOfFieldDrawToOriginal();
             this._FieldDrawController._Base._FieldDrawBackgroundModerator._ShowFieldDrawShadow();
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
+            this._FieldDrawController._Base._FieldDrawBackgroundModerator._SetBackgroundOfFieldDrawToOriginal();
             this._FieldDrawController._Base._FieldDrawBackgroundModerator._HideFieldDrawShadow();
         }
     }

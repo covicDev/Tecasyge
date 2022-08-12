@@ -15,6 +15,7 @@ namespace _cov._CardGold
         private Color _cardGoldBackgroundOriginalColor;
         private Color _cardGoldBackgroundDenialColor = Color.red;
         private Color _cardGoldBackgroundApprovalColor = Color.green;
+        private Color _cardGoldBackgroundDiscardColor = Color.grey;
 
         #endregion
 
@@ -46,6 +47,10 @@ namespace _cov._CardGold
         {
             this._cardGoldShadowImageCanvas.alpha = 0f;
         }
+        public void _SetBackgroundOfCardGoldToGray()
+        {
+            this._cardGoldBackgroundImage.color = this._cardGoldBackgroundDiscardColor;
+        }
     }
 
     public interface _ICardGoldBackgroundModerator
@@ -55,6 +60,7 @@ namespace _cov._CardGold
         void _SetBackgroundOfCardGoldDenial();
         void _SetBackgroundOfCardGoldToOriginal();
         void _ShowCardGoldShadow();
+        void _SetBackgroundOfCardGoldToGray();
     }
 
 }

@@ -1,10 +1,8 @@
-﻿namespace _cov._FieldPile
+﻿namespace _cov._FieldDiscard
 {
-    public class _SFieldPileName
+    public class _SFieldDiscardName
     {
         public static string _BackgroundName = "Background";
-        public static string _AddonName = "Addon";
         public static string _ShadowName = "Shadow";
     }
 }
-

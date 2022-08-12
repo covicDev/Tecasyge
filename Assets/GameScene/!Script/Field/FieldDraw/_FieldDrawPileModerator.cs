@@ -20,13 +20,13 @@ namespace _cov._FieldDraw
         // ---
 
         #region --- Public method ---
-        public Transform _GetNextFreeFieldPileTranform()
+        public Transform _GetNextFreeFieldPileAddonTranform()
         {
             foreach (var item in _fieldPileList)
             {
                 if (item.transform.GetComponent<_FieldPileController>().__IsFieldPileFree() == true)
                 {
-                    return item.transform;
+                    return item.transform.Find(_SFieldDrawName._PileAddonName).transform;
                 }
             }
             throw new System.Exception("0x0002 Out of boundaries.");
@@ -73,7 +73,7 @@ namespace _cov._FieldDraw
     {
         _IFieldDrawController _FieldDrawController { get; }
         bool __CheckIsAnyFieldPileFree { get; }
-        Transform _GetNextFreeFieldPileTranform();
+        Transform _GetNextFreeFieldPileAddonTranform();
         void _PrepareFieldPileSlots();
         
     }

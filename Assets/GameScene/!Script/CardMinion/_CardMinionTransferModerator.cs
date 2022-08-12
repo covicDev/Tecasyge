@@ -20,10 +20,14 @@ namespace _cov._CardMinion
         /// <returns></returns>
         public bool _TransferCardMinionToThisField(Transform parent, Vector3 position, _EField field)
         {
+            if (field == _EField.Pile)
+            {
+                this._CardMinionController._Base._CardMinionFieldModerator._SetCurrentFieldTo(field);
+            }
+
             if (field == _EField.Battlefield)
             {
                 this._CardMinionController._Base._CardMinionFieldModerator._SetCurrentFieldTo(field);
-
             }
 
             this.transform.SetParent(parent);
@@ -47,6 +51,8 @@ namespace _cov._CardMinion
             // Change card gold position.
             var position = this._goldParent.transform.position;
             goldCard.transform.position = new Vector3(position.x - offset, position.y, position.z);
+
+            goldCard.transform.GetComponent<_CardGold._CardGoldController>()._Base._CurrentField = _EField.Battlefield;
 
             // Disable gold card.
             goldCard.transform.GetComponent<_CardGold._CardGoldMovement>().enabled = false;

@@ -6,6 +6,7 @@
         Pile,
         Hand,
         Battlefield,
+        Discard,
         Graveyard
     }
 }
