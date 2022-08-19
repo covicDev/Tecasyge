@@ -6,9 +6,9 @@ namespace _cov._CardMinion
 {
     public class _CardMinionTransferModerator : MonoBehaviour, _ICardMinionTransferModerator
     {
-        public _ICardMinionController _CardMinionController => this.transform.GetComponent<_CardMinionController>();
+        public _ICardMinionBase _CardMinionBase => this.transform.GetComponent<_CardMinionBase>();
 
-        private Transform _goldParent => this._CardMinionController._Base._CardGoldParent;
+        private Transform _goldParent => this._CardMinionBase._CardGoldParent;
 
         #region --- Public method ---
         /// <summary>
@@ -22,41 +22,18 @@ namespace _cov._CardMinion
         {
             if (field == _EField.Pile)
             {
-                this._CardMinionController._Base._CardMinionFieldModerator._SetCurrentFieldTo(field);
+                this._CardMinionBase._CardMinionFieldModerator._SetCurrentFieldTo(field);
             }
 
             if (field == _EField.Battlefield)
             {
-                this._CardMinionController._Base._CardMinionFieldModerator._SetCurrentFieldTo(field);
+                this._CardMinionBase._CardMinionFieldModerator._SetCurrentFieldTo(field);
             }
 
             this.transform.SetParent(parent);
             this.transform.position = position;
 
             this.transform.GetComponent<Canvas>().overrideSorting = true;
-            return true;
-        }
-
-        public bool _TransferCardGoldToThisMinion(Transform goldCard)
-        {
-            goldCard.transform.SetParent(this._CardMinionController._Base._CardGoldParent);
-
-            // Overriding sorting layer.
-            goldCard.GetComponent<Canvas>().overrideSorting = true;
-            goldCard.GetComponent<Canvas>().sortingOrder -= 1; //goldAmount;
-
-            // Calculating the gold card offset. <todo> better calculated offset value.
-            float offset = ((float)(1) * .3f); //goldAmount+1
-
-            // Change card gold position.
-            var position = this._goldParent.transform.position;
-            goldCard.transform.position = new Vector3(position.x - offset, position.y, position.z);
-
-            goldCard.transform.GetComponent<_CardGold._CardGoldController>()._Base._CurrentField = _EField.Battlefield;
-
-            // Disable gold card.
-            goldCard.transform.GetComponent<_CardGold._CardGoldMovement>().enabled = false;
-
             return true;
         }
 
@@ -76,10 +53,9 @@ namespace _cov._CardMinion
 
     public interface _ICardMinionTransferModerator
     {
-        _ICardMinionController _CardMinionController { get; }
+        _ICardMinionBase _CardMinionBase { get; }
         bool _TransferCardMinionToThisField(Transform parent, Vector3 position, _EField field);
         bool _CheckIfCardMinionCanBeTransferedToThisField(_EField field);
-        bool _TransferCardGoldToThisMinion(Transform goldCard);
     }
 }
 

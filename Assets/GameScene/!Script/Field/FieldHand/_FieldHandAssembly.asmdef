@@ -1,0 +1,15 @@
+{
+    "name": "_FieldHandAssembly",
+    "references": [
+        "GUID:d6bddb5021f41284999ab7af1673359b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

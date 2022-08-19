@@ -5,7 +5,7 @@ namespace _cov._CardMinion
     public class _CardMinionStatsModerator : MonoBehaviour, _ICardMinionStatsModerator
     {
         #region --- Variable ---
-        public _ICardMinionController _CardMinionController => this.transform.GetComponent<_CardMinionController>();
+        public _ICardMinionBase _CardMinionBase => this.transform.GetComponent<_CardMinionBase>();
 
         // Store in struct card minion stats.
         private _SCardMinionStruct _baseStats;
@@ -14,13 +14,13 @@ namespace _cov._CardMinion
 
         //Boolean checking the states of mionion. 
         // Checks if minion is on battle field, it means check if minion can be attacked
-        private bool __onBattlefield = false;
+        //private bool __onBattlefield = false;
         // Checks if minion is attacking right now
-        private bool __onAttackMode = false;
+        //private bool __onAttackMode = false;
         // Checks if minion handle the condition to attack other cards
         private bool __canAttackOthers = false;
         // Checks if minion handle the condition to be attacked by others
-        private bool __canBeTargetOfAttack = false;
+        //private bool __canBeTargetOfAttack = false;
 
         #endregion
 
@@ -30,7 +30,7 @@ namespace _cov._CardMinion
         public bool _CheckIfGoldCardCanBeGivenToThisMinion()
         {
             // checks if minion card is on battlefield.
-            if (this._CardMinionController._Base._CardMinionFieldModerator._GetCurrentField() == _Enum._EField.Battlefield)
+            if (this._CardMinionBase._CardMinionFieldModerator._GetCurrentField() == _Enum._EField.Battlefield)
             {
                 return true;
             }
@@ -48,7 +48,7 @@ namespace _cov._CardMinion
         /// </summary>
         public void _PrepareCardMinionBasisStats()
         {
-            var maker = _CardMinionController._Base._CardMinionManager._CardMinionStatsMaker;
+            var maker = _CardMinionBase._CardMinionManager._CardMinionStatsMaker;
             _SCardMinionStruct data = maker._MakeMinion(1);
             this._baseStats = new _SCardMinionStruct()
             {
@@ -68,14 +68,14 @@ namespace _cov._CardMinion
         // Method updates gold amount.
         private void _updateCardGoldAmount()
         {
-            this._currentStats._Gold = this._CardMinionController._Base._CardGoldParent.childCount;
+            this._currentStats._Gold = this._CardMinionBase._CardGoldParent.childCount;
             this._currentStats._Gold = Mathf.Clamp(this._currentStats._Gold, 0, 9);
         }
 
         // Method updates card minion attack possibility.
         private void _updateCardMinionAttackPossibility()
         {
-            if (this._CardMinionController._Base._CardMinionFieldModerator.__IsCardMinionOnFieldBattle())
+            if (this._CardMinionBase._CardMinionFieldModerator.__IsCardMinionOnFieldBattle())
             {
                 if (this._currentStats._Gold >= this._baseStats._Gold)
                 {

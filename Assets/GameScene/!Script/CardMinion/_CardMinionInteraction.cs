@@ -19,8 +19,28 @@ namespace _cov._CardMinion
             {
                 if (this._cardGoldInteraction())
                 {
+                    var goldCardParent = this._CardMinionController._Base._CardGoldParent;
+                    // Calculating the gold card offset. <todo> better calculated offset value.
+                    float offset = ((float)(1) * .3f); //goldAmount+1
+
+                    // Change card gold position.
+                    var goldCardParentPosition = goldCardParent.transform.position;
+                    var position = new Vector3(goldCardParentPosition.x - offset, goldCardParentPosition.y, goldCardParentPosition.z);
+
                     var cardGold = eventData.pointerDrag.transform;
-                    this._CardMinionController._Base._CardMinionTransferModerator._TransferCardGoldToThisMinion(cardGold);
+                    var cardGoldScript = cardGold.GetComponent<_CardGold._CardGoldController>();
+                    cardGoldScript._TransferCardGoldToThisField(
+                        this._CardMinionController._Base._CardGoldParent,
+                        position,
+                        this._CardMinionController._Base._CardMinionFieldModerator._GetCurrentField()
+                        );
+
+                    // Overriding sorting layer.
+                    cardGold.GetComponent<Canvas>().overrideSorting = true;
+                    cardGold.GetComponent<Canvas>().sortingOrder -= 1;
+
+                    //this._CardMinionController._Base._CardMinionTransferModerator._TransferCardGoldToThisMinion(cardGold);
+
                     this._CardMinionController._Base._CardMinionBackgroundModerator._SetBackgroundOfCardMinionToOriginal();
                 }
             }

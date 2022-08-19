@@ -1,0 +1,15 @@
+{
+    "name": "_CardGoldBaseAssembly",
+    "references": [
+        "GUID:075c1314c1b74f642b41d82120e2ec32"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

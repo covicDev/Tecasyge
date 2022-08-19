@@ -3,8 +3,6 @@
 using _cov._Enum;
 namespace _cov._FieldDiscard
 {
-
-
     public class _FieldDiscardBase : MonoBehaviour, _IFieldDiscardBase
     {
         public Transform _GameManager => GameObject.Find("GameManager").transform;

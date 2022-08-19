@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
+using _cov._Enum;
+
 namespace _cov._CardMinion
 {
     //[RequireComponent(typeof(_CardMinionController))]
@@ -12,6 +14,7 @@ namespace _cov._CardMinion
         private Camera _camera => this._cardMinionController._Base._CardMinionManager._CameraMain;
         private CanvasGroup _canvasGroup => this.transform.GetComponent<CanvasGroup>();
 
+        private _EField _fieldBeforeBeginDrag = _EField.Null;
         #endregion
 
         #region --- Mouse events ---
@@ -23,7 +26,7 @@ namespace _cov._CardMinion
             // Drag only when left mouse is used.
             if (Input.GetMouseButton(0))
             {
-
+                this._fieldBeforeBeginDrag = this._cardMinionController._Base._CardMinionFieldModerator._GetCurrentField();
             }
         }
 
@@ -43,6 +46,11 @@ namespace _cov._CardMinion
         {
             // Cursor.visible = true;
             this._canvasGroup.blocksRaycasts = true;
+
+            if(this._fieldBeforeBeginDrag == this._cardMinionController._Base._CardMinionFieldModerator._GetCurrentField())
+            {
+                this.transform.position = this.transform.parent.position;
+            }
         }
 
         #endregion

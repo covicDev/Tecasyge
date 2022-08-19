@@ -5,7 +5,7 @@ namespace _cov._FieldDraw
 {
     public class _FieldDrawPileModerator : MonoBehaviour, _IFieldDrawPileModerator
     {
-        public _IFieldDrawController _FieldDrawController => this.transform.GetComponent<_FieldDrawController>();
+        public _IFieldDrawBase _FieldDrawBase => this.transform.GetComponent<_FieldDrawBase>();
 
         #region --- Public variable ---
         public bool __CheckIsAnyFieldPileFree => this._checkIsAnyFieldPileFree();
@@ -39,7 +39,7 @@ namespace _cov._FieldDraw
         #region --- Preparation ---
         public void _PrepareFieldPileSlots()
         {
-            var fieldPilePrefab = this._FieldDrawController._Base._FieldPilePrefab;
+            var fieldPilePrefab = this._FieldDrawBase._FieldPilePrefab;
             var fieldPileParent = this.transform.Find(_SFieldDrawName._SlotName);
 
             // <todo> Better placing algorithm.
@@ -71,7 +71,7 @@ namespace _cov._FieldDraw
     }
     public interface _IFieldDrawPileModerator
     {
-        _IFieldDrawController _FieldDrawController { get; }
+        _IFieldDrawBase _FieldDrawBase { get; }
         bool __CheckIsAnyFieldPileFree { get; }
         Transform _GetNextFreeFieldPileAddonTranform();
         void _PrepareFieldPileSlots();

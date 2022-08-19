@@ -51,7 +51,7 @@ namespace _cov._FieldDiscard
             #region --- Card minion interaction ---
             if (data.CompareTag(_SName._TagCardMinion))
             {
-                data.transform.GetComponent<_CardMinion._CardMinionController>()._Base._CardMinionBackgroundModerator._SetBackgroundOfCardMinionToGray();
+                data.transform.GetComponent<_CardMinion._CardMinionController>()._SetCardMinionBackgroundToGray();
                 this._FieldDiscardController._Base._FieldDiscardBackgroundModerator._SetBackgroundOfFieldDiscardApproval();
             }
             #endregion
@@ -59,7 +59,7 @@ namespace _cov._FieldDiscard
             #region --- Card gold interaction ---
             if (data.CompareTag(_SName._TagCardGold))
             {
-                data.transform.GetComponent<_CardGold._CardGoldController>()._Base._CardGoldBackgroundModerator._SetBackgroundOfCardGoldToGray();
+                data.transform.GetComponent<_CardGold._CardGoldController>()._SetCardGoldBackgroundToGray();
                 this._FieldDiscardController._Base._FieldDiscardBackgroundModerator._SetBackgroundOfFieldDiscardApproval();
             }
             #endregion
@@ -77,14 +77,14 @@ namespace _cov._FieldDiscard
             #region --- Card minion interaction ---
             if (data.CompareTag(_SName._TagCardMinion))
             {
-                data.transform.GetComponent<_CardMinion._CardMinionController>()._Base._CardMinionBackgroundModerator._SetBackgroundOfCardMinionToOriginal();
+               data.transform.GetComponent<_CardMinion._CardMinionController>()._SetCardMinionBackgroundToOriginal();
             }
             #endregion
 
             #region --- Card gold interaction ---
             if (data.CompareTag(_SName._TagCardGold))
             {
-                data.transform.GetComponent<_CardGold._CardGoldController>()._Base._CardGoldBackgroundModerator._SetBackgroundOfCardGoldToOriginal();
+                data.transform.GetComponent<_CardGold._CardGoldController>()._SetCardGoldBackgroundToOriginal();
             }
             #endregion
 

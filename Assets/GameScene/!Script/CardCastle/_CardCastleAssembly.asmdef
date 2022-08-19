@@ -1,0 +1,15 @@
+{
+    "name": "_CardCastleAssembly",
+    "references": [
+        "GUID:eab03a000a7b2324fbd603b54695e0c3"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

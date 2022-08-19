@@ -81,6 +81,10 @@ namespace _cov._CardMinion
             return true;
         }
 
+        // Sets.
+
+        public void _SetCardMinionBackgroundToGray() => this._Base._CardMinionBackgroundModerator._SetBackgroundOfCardMinionToGray();
+        public void _SetCardMinionBackgroundToOriginal() => this._Base._CardMinionBackgroundModerator._SetBackgroundOfCardMinionToOriginal();
         #endregion
 
     }
@@ -90,5 +94,9 @@ namespace _cov._CardMinion
         _ICardMinionBase _Base { get; }
         bool _TransferCardMinionToThisField(Transform parent, Vector3 position, _EField field);
         bool _DiscardCardMinion();
+
+        // Sets.
+        void _SetCardMinionBackgroundToGray();
+        void _SetCardMinionBackgroundToOriginal();
     }
 }

@@ -1,21 +1,27 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
+using _cov._Enum;
+
 namespace _cov._CardGold
 {
     public class _CardGoldMovement : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
-        public _ICardGoldController _CardGoldController => this.transform.GetComponent<_CardGoldController>();
+        public _ICardGoldBase _CardGoldBase => this.transform.GetComponent<_CardGoldBase>();
 
         #region --- Variable ---
-        private Camera _camera => this._CardGoldController._Base._CardGoldManager._CameraMain;
+        private Camera _camera => this._CardGoldBase._CardGoldManager._CameraMain;
         private CanvasGroup _canvasGroup => this.transform.GetComponent<CanvasGroup>();
+        private _EField _fieldBeforeBeginDrag = _EField.Null;
 
         #endregion
 
         public void OnBeginDrag(PointerEventData eventData)
         {
             this._canvasGroup.blocksRaycasts = false;
+
+            // Get current gold card field.
+            this._fieldBeforeBeginDrag = this._CardGoldBase._CurrentField;
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -33,6 +39,12 @@ namespace _cov._CardGold
         public void OnEndDrag(PointerEventData eventData)
         {
             this._canvasGroup.blocksRaycasts = true;
+    
+            // If field type doesn't change then move gold card to it's parent position.
+            if(this._fieldBeforeBeginDrag == this._CardGoldBase._CurrentField)
+            {
+                this.transform.position = this.transform.parent.position;
+            }
         }
 
         #region --- Private method ---

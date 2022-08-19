@@ -17,6 +17,7 @@ namespace _cov._FieldDiscard
 
         public bool _DestroyCardGold(GameObject card)
         {
+            
             var cardScript = card.transform.GetComponent<_CardGold._CardGoldController>();
             cardScript._TransferCardGoldToThisField(this.transform, this.transform.position, this._Base._FieldType);
             cardScript._DiscardCardGold();

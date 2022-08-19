@@ -10,6 +10,7 @@ TagManager:
   - _FieldDraw
   - _FieldHand
   - _FieldDiscard
+  - _CardCastle
   layers:
   - Default
   - TransparentFX
@@ -58,4 +59,7 @@ TagManager:
     locked: 0
   - name: _CardMinionLayer
     uniqueID: 3570982795
+    locked: 0
+  - name: _FieldHandLayer
+    uniqueID: 3235190061
     locked: 0
