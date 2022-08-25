@@ -63,3 +63,6 @@ TagManager:
   - name: _FieldHandLayer
     uniqueID: 3235190061
     locked: 0
+  - name: _CursorLayer
+    uniqueID: 1005593605
+    locked: 0

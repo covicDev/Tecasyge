@@ -5,6 +5,8 @@ namespace _cov._CardMinion
 {
     public class _CardMinionGraphicAdapter : MonoBehaviour, _ICardMinionGraphicAdapter
     {
+        public _ICardMinionBase _CardMinionBase => this.transform.GetComponent<_CardMinionBase>();
+
         #region --- Variable ---
         private GameObject _AttackValueSprite;
         private GameObject _LifeValueSprite;
@@ -41,7 +43,11 @@ namespace _cov._CardMinion
         /// </summary>
         public void _Render()
         {
-            
+            // Takes current card minion stats.
+            this._cardMinionCurrentStats = this._CardMinionBase._CardMinionStatsModerator._GetCurrentStatsStruct();
+
+            // done only for Gold and Life amount.
+            this._updateGoldAmount();
         }
 
         /// <summary>
@@ -102,6 +108,33 @@ namespace _cov._CardMinion
         #endregion
 
         #endregion
+
+        #region --- Private method ----
+        private void _updateGoldAmount()
+        {
+            int baseGold = this._cardMinionBasisStats._Gold;
+            int currentGold = this._cardMinionCurrentStats._Gold;
+
+            if (currentGold == baseGold)
+            {
+                this._GoldValueSprite.GetComponent<Image>().sprite = this._normalNumber[currentGold];
+                return;
+            }
+
+            if (currentGold < baseGold)
+            {
+                this._GoldValueSprite.GetComponent<Image>().sprite = this._underNumber[currentGold];
+                return;
+            }
+
+            if(currentGold > baseGold)
+            {
+                this._GoldValueSprite.GetComponent<Image>().sprite = this._overNumber[currentGold];
+                return;
+            }
+        }
+
+        #endregion
     }
 
     public interface _ICardMinionGraphicAdapter
@@ -116,6 +149,7 @@ namespace _cov._CardMinion
         void _SetOverNumber(in Sprite[] sprites);
         void _SetWrongNumber(in Sprite[] sprites);
 
+
         void _SetReferencesToValueSprites(
             in GameObject AttackValueSprite,
             in GameObject LifeValueSprite,
@@ -123,6 +157,6 @@ namespace _cov._CardMinion
             in GameObject GoldValueSprite,
             in GameObject PortraitSprite
             );
-        
+
     }
 }

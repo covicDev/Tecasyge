@@ -12,6 +12,7 @@ namespace _cov._FieldDiscard
         {
             if (eventData?.pointerDrag == null)
             {
+                Cursor.visible = true;
                 this._FieldDiscardController._Base._FieldDiscardBackgroundModerator._SetBackgroundOfFieldDiscardToOriginal();
                 return;
             }
@@ -21,6 +22,9 @@ namespace _cov._FieldDiscard
             #region --- Card minion interaction ---
             if (data.CompareTag(_SName._TagCardMinion))
             {
+                var dataScript = data.transform.GetComponent<_CardMinion._CardMinionController>();
+                if (dataScript._CheckIfCardMinionCanBeTransferedToThisField(this._FieldDiscardController._Base._FieldType) == false) return;
+
                 if (this._FieldDiscardController._DestroyCardMinion(data))
                 {
                     this._FieldDiscardController._Base._FieldDiscardBackgroundModerator._SetBackgroundOfFieldDiscardDenial();
@@ -31,6 +35,9 @@ namespace _cov._FieldDiscard
             #region --- Card gold interaction ---
             if (data.CompareTag(_SName._TagCardGold))
             {
+                var dataScript = data.transform.GetComponent<_CardGold._CardGoldController>();
+                if (dataScript._CheckIfCardGoldCanBeTransferedToThisField(this._FieldDiscardController._Base._FieldType) == false) return;
+
                 if (this._FieldDiscardController._DestroyCardGold(data))
                 {
                     this._FieldDiscardController._Base._FieldDiscardBackgroundModerator._SetBackgroundOfFieldDiscardDenial();
@@ -51,7 +58,10 @@ namespace _cov._FieldDiscard
             #region --- Card minion interaction ---
             if (data.CompareTag(_SName._TagCardMinion))
             {
-                data.transform.GetComponent<_CardMinion._CardMinionController>()._SetCardMinionBackgroundToGray();
+                var dataScript = data.transform.GetComponent<_CardMinion._CardMinionController>();
+                if (dataScript._CheckIfCardMinionCanBeTransferedToThisField(this._FieldDiscardController._Base._FieldType) == false) return;
+
+                dataScript._SetCardMinionBackgroundToGray();
                 this._FieldDiscardController._Base._FieldDiscardBackgroundModerator._SetBackgroundOfFieldDiscardApproval();
             }
             #endregion
@@ -77,7 +87,7 @@ namespace _cov._FieldDiscard
             #region --- Card minion interaction ---
             if (data.CompareTag(_SName._TagCardMinion))
             {
-               data.transform.GetComponent<_CardMinion._CardMinionController>()._SetCardMinionBackgroundToOriginal();
+                data.transform.GetComponent<_CardMinion._CardMinionController>()._SetCardMinionBackgroundToOriginal();
             }
             #endregion
 

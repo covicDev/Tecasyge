@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+using _cov._Enum;
+
 namespace _cov._CardMinion
 {
     public class _CardMinionBase : MonoBehaviour, _ICardMinionBase
@@ -14,6 +16,9 @@ namespace _cov._CardMinion
         public _ICardMinionBackgroundModerator _CardMinionBackgroundModerator => this.transform.GetComponent<_CardMinionBackgroundModerator>();
         public _ICardMinionTransferModerator _CardMinionTransferModerator => this.transform.GetComponent<_CardMinionTransferModerator>();
         public _ICardMinionFieldModerator _CardMinionFieldModerator => this.transform.GetComponent<_CardMinionFieldModerator>();
+
+        private _EGameState _gameCurrentState = _EGameState.Null;
+        public _EGameState _GameCurrentState { get => _gameCurrentState; set => _gameCurrentState = value; }
         #endregion
     }
 
@@ -21,6 +26,7 @@ namespace _cov._CardMinion
     {
         Transform _GameManager { get; }
         Transform _CardGoldParent { get; }
+        _EGameState _GameCurrentState { get; set; }
         _ICardMinionManager _CardMinionManager { get; }
         _ICardMinionGraphicAdapter _CardMinionGraphicAdapter { get; }
         _ICardMinionStatsModerator _CardMinionStatsModerator { get; }

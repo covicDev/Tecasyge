@@ -15,6 +15,7 @@ namespace _cov._FieldDraw
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            Cursor.visible = true;
             this._FieldDrawController._Base._FieldDrawBackgroundModerator._SetBackgroundOfFieldDrawToOriginal();
             this._FieldDrawController._Base._FieldDrawBackgroundModerator._ShowFieldDrawShadow();
         }

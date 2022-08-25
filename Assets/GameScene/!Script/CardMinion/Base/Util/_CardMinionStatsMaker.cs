@@ -27,7 +27,7 @@ namespace _cov._CardMinion._CardMinionMaker
         }
         private _SCardMinionStruct _getMinionStats_Lvl_1()
         {
-            _SCardMinionStruct tmpStruct = new _SCardMinionStruct();
+            //_SCardMinionStruct tmpStruct = new _SCardMinionStruct();
 
             int[] val = new int[4];
 

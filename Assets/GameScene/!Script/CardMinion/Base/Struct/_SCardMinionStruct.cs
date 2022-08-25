@@ -2,14 +2,14 @@
 
 namespace _cov._CardMinion
 {
-    public class _SCardMinionStruct
+    public struct _SCardMinionStruct
     {
-        public Sprite _Image = null;
+        public Sprite _Image;
 
-        public int _Attack = 0;
-        public int _Life = 0;
-        public int _Armor = 0;
-        public int _Gold = 0;
+        public int _Attack;
+        public int _Life;
+        public int _Armor;
+        public int _Gold;
 
     }
 }

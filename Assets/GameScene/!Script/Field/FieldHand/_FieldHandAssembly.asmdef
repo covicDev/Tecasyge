@@ -1,12 +1,16 @@
 {
     "name": "_FieldHandAssembly",
     "references": [
-        "GUID:d6bddb5021f41284999ab7af1673359b"
+        "GUID:d6bddb5021f41284999ab7af1673359b",
+        "GUID:3d292a7a33c0a614083b377e4f288a86",
+        "GUID:c36b147e604a81b4bba0ba16b03c6f74",
+        "GUID:aebffe67aecf61c45bb2b0f5af40aec1",
+        "GUID:075c1314c1b74f642b41d82120e2ec32"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
-    "overrideReferences": false,
+    "overrideReferences": true,
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],

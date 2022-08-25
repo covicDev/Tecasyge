@@ -30,6 +30,7 @@ namespace _cov._FieldBattle
                 // Transfer minion card.
                 if (cardMinion._TransferCardMinionToThisField(this._parentForCard, this.transform.position, this._fieldBattleController._FieldType))
                 {
+                    cardMinion.transform.GetComponent<Canvas>().overrideSorting = true;
                     // Disable this script.
                     this.enabled = false;
                 }

@@ -12,20 +12,28 @@ namespace _cov._CardMinion
         private _SCardMinionStruct _currentStats;
         public _SCardMinionStruct _GetCurrentStatsStruct() => _currentStats;
 
-        //Boolean checking the states of mionion. 
+        //Boolean checking the states of minion. 
         // Checks if minion is on battle field, it means check if minion can be attacked
-        //private bool __onBattlefield = false;
+        private bool __onBattlefield = false;
         // Checks if minion is attacking right now
-        //private bool __onAttackMode = false;
+        private bool __onAttackMode = false;
         // Checks if minion handle the condition to attack other cards
         private bool __canAttackOthers = false;
         // Checks if minion handle the condition to be attacked by others
-        //private bool __canBeTargetOfAttack = false;
+        private bool __canBeTargetOfAttack = false;
 
         #endregion
 
         #region --- Public method ---
 
+        public void _UpdateCardMinionStats()
+        {
+
+            this._updateCardGoldAmount();
+            this._updateCardMinionAttackPossibility();
+
+        }
+        
         #region --- Check ---
         public bool _CheckIfGoldCardCanBeGivenToThisMinion()
         {
@@ -35,10 +43,20 @@ namespace _cov._CardMinion
                 return true;
             }
 
-            // check if there are any gold cards.
-
             return false;
         }
+
+        public bool _CheckIfMinionCanAttackOthers()
+        {
+            return this.__canAttackOthers;
+        }
+
+        #region --- Get ---
+        public int _GetCardGoldAmount()
+        {
+            return this._currentStats._Gold;
+        }
+        #endregion
 
         #endregion
 
@@ -77,6 +95,8 @@ namespace _cov._CardMinion
         {
             if (this._CardMinionBase._CardMinionFieldModerator.__IsCardMinionOnFieldBattle())
             {
+                this.__onBattlefield = true;
+                this.__canBeTargetOfAttack = true;
                 if (this._currentStats._Gold >= this._baseStats._Gold)
                 {
                     this.__canAttackOthers = true;
@@ -92,5 +112,8 @@ namespace _cov._CardMinion
         _SCardMinionStruct _GetCurrentStatsStruct();
         void _PrepareCardMinionBasisStats();
         bool _CheckIfGoldCardCanBeGivenToThisMinion();
+        bool _CheckIfMinionCanAttackOthers();
+        void _UpdateCardMinionStats();
+        int _GetCardGoldAmount();
     }
 }

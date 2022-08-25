@@ -5,7 +5,7 @@ namespace _cov._FieldDraw
 {
     public class _FieldDrawPileModerator : MonoBehaviour, _IFieldDrawPileModerator
     {
-        public _IFieldDrawBase _FieldDrawBase => this.transform.GetComponent<_FieldDrawBase>();
+        public _IFieldDrawBase _Base => this.transform.GetComponent<_FieldDrawBase>();
 
         #region --- Public variable ---
         public bool __CheckIsAnyFieldPileFree => this._checkIsAnyFieldPileFree();
@@ -15,6 +15,7 @@ namespace _cov._FieldDraw
         #region --- Private variable ---
         private List<GameObject> _fieldPileList = new List<GameObject>();
 
+        private float _fieldPileXPostion;
         #endregion
 
         // ---
@@ -31,19 +32,34 @@ namespace _cov._FieldDraw
             }
             throw new System.Exception("0x0002 Out of boundaries.");
         }
-
-        
+        public void _RemoveRemainedCardsOnPileAddon()
+        {
+            foreach (var item in _fieldPileList)
+            {
+                if (item.transform.GetComponent<_FieldPileController>().__IsFieldPileFree() != true)
+                {
+                    var comp = item.transform.Find(_SFieldDrawName._PileAddonName).transform.GetComponentsInChildren<Component>();
+                    foreach (var card in comp)
+                    {
+                        if ((card is Transform) == false)
+                        {
+                            Destroy(card.gameObject);
+                        }
+                    }
+                }
+            }
+        }
 
         #endregion
 
         #region --- Preparation ---
         public void _PrepareFieldPileSlots()
         {
-            var fieldPilePrefab = this._FieldDrawBase._FieldPilePrefab;
+            var fieldPilePrefab = this._Base._FieldPilePrefab;
             var fieldPileParent = this.transform.Find(_SFieldDrawName._SlotName);
 
-            // <todo> Better placing algorithm.
-            var position = new Vector3(this.transform.position.x - 2, this.transform.position.y, this.transform.position.z);
+            var _fieldPileXPostion = this._Base._FieldDrawManager._FieldPileXPosition;
+            var position = new Vector3(this.transform.position.x + _fieldPileXPostion, this.transform.position.y, this.transform.position.z);
 
             var data = Instantiate(fieldPilePrefab, position, Quaternion.identity);
             data.transform.SetParent(fieldPileParent);
@@ -71,10 +87,11 @@ namespace _cov._FieldDraw
     }
     public interface _IFieldDrawPileModerator
     {
-        _IFieldDrawBase _FieldDrawBase { get; }
+        _IFieldDrawBase _Base { get; }
         bool __CheckIsAnyFieldPileFree { get; }
         Transform _GetNextFreeFieldPileAddonTranform();
         void _PrepareFieldPileSlots();
-        
+        void _RemoveRemainedCardsOnPileAddon();
+
     }
 }

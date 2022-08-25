@@ -10,6 +10,8 @@ namespace _cov._CardMinion
     {
         public _ICardMinionController _CardMinionController => this.transform.GetComponent<_CardMinionController>();
 
+        private float _cardGoldXJumpPosition => this._CardMinionController._Base._CardMinionManager._CardGoldXJumpPosition;
+
         public void OnDrop(PointerEventData eventData)
         {
             if (eventData?.pointerDrag == null) return;
@@ -20,8 +22,10 @@ namespace _cov._CardMinion
                 if (this._cardGoldInteraction())
                 {
                     var goldCardParent = this._CardMinionController._Base._CardGoldParent;
-                    // Calculating the gold card offset. <todo> better calculated offset value.
-                    float offset = ((float)(1) * .3f); //goldAmount+1
+
+                    // Calculating the gold card offset.     
+                    int cardGoldAmount = this._CardMinionController._Base._CardMinionStatsModerator._GetCardGoldAmount();
+                    float offset = ((float)(cardGoldAmount) * _cardGoldXJumpPosition) + _cardGoldXJumpPosition;
 
                     // Change card gold position.
                     var goldCardParentPosition = goldCardParent.transform.position;
@@ -37,10 +41,18 @@ namespace _cov._CardMinion
 
                     // Overriding sorting layer.
                     cardGold.GetComponent<Canvas>().overrideSorting = true;
-                    cardGold.GetComponent<Canvas>().sortingOrder -= 1;
+                    cardGold.GetComponent<Canvas>().sortingOrder -= (int)offset;
 
-                    //this._CardMinionController._Base._CardMinionTransferModerator._TransferCardGoldToThisMinion(cardGold);
+                    // Disable card gold movement.
+                    cardGoldScript._DisableCardGoldMovementAndInteraction();
 
+                    // Update stats.
+                    this._CardMinionController._Base._CardMinionStatsModerator._UpdateCardMinionStats();
+
+                    // Update rendering.
+                    this._CardMinionController._Base._CardMinionGraphicAdapter._Render();
+
+                    // Reset card minion background.
                     this._CardMinionController._Base._CardMinionBackgroundModerator._SetBackgroundOfCardMinionToOriginal();
                 }
             }

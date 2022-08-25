@@ -12,6 +12,9 @@ namespace _cov._FieldDraw
         // Shadow as a canvas group.
         private CanvasGroup _fieldDrawShadowImageCanvas => this.transform.Find(_SFieldDrawName._ShadowName).transform.GetComponent<CanvasGroup>();
 
+        // Background canvas group.
+        private CanvasGroup _fieldDrawImageCanvas => this.transform.GetComponent<CanvasGroup>();
+
         // Preparation for denial and approval interactions.
         private Color _fieldDrawBackgroundOriginalColor;
         private Color _fieldDrawBackgroundDenialColor = Color.red;
@@ -38,6 +41,7 @@ namespace _cov._FieldDraw
         public void _SetBackgroundOfFieldDrawToOriginal()
         {
             this._fieldDrawBackgroundImage.color = this._fieldDrawBackgroundOriginalColor;
+            this._fieldDrawImageCanvas.alpha = 1f;
         }
         public void _ShowFieldDrawShadow()
         {
@@ -46,6 +50,10 @@ namespace _cov._FieldDraw
         public void _HideFieldDrawShadow()
         {
             this._fieldDrawShadowImageCanvas.alpha = 0f;
+        }
+        public void _SetBackgroundOfFieldDrawToGrey()
+        {
+            this._fieldDrawImageCanvas.alpha = 0.7f;
         }
     }
 
@@ -56,6 +64,7 @@ namespace _cov._FieldDraw
         void _SetBackgroundOfFieldDrawToOriginal();
         void _ShowFieldDrawShadow();
         void _HideFieldDrawShadow();
+        void _SetBackgroundOfFieldDrawToGrey();
     }
 }
 

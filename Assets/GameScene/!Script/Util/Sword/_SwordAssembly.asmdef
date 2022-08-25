@@ -1,0 +1,15 @@
+{
+    "name": "_SwordAssembly",
+    "references": [
+        "GUID:be1f2ce90c7dfae469adb3f099cc1506"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

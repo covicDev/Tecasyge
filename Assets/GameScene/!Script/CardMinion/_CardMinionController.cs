@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 
 using _cov._Enum;
+using _cov._GameState;
 
 namespace _cov._CardMinion
 {
-    public class _CardMinionController : MonoBehaviour, _ICardMinionController
+    public class _CardMinionController : MonoBehaviour, _ICardMinionController, _IGameStateHandler
     {
         public _ICardMinionBase _Base => this.transform.GetComponent<_CardMinionBase>();
 
@@ -22,11 +23,22 @@ namespace _cov._CardMinion
 
         private void Start()
         {
+            // Attach as a Game state handler.
+            var gameStateController = this._Base._GameManager.GetComponentInChildren<_GameStateController>();
+            gameStateController._Attach(this);
+            this._Base._GameCurrentState = gameStateController._GameCurrentState;
+
             // Preparation for stats moderator.
             _Base._CardMinionStatsModerator._PrepareCardMinionBasisStats();
 
             // Preparation for graphic adapter.
             _prepareCardGraphicAdapter();
+        }
+
+        private void OnDestroy()
+        {
+            // Detach as a Game state handler.
+            this._Base._GameManager.GetComponentInChildren<_GameStateController>()._Detach(this);
         }
 
         #region --- Private method ---
@@ -70,10 +82,6 @@ namespace _cov._CardMinion
         {
             return this._Base._CardMinionTransferModerator._TransferCardMinionToThisField(parent, position, field);
         }
-        public bool _CheckIfCardMinionCanBeTransferedToThisField(_EField field)
-        {
-            return this._Base._CardMinionTransferModerator._CheckIfCardMinionCanBeTransferedToThisField(field);
-        }
 
         public bool _DiscardCardMinion()
         {
@@ -81,10 +89,23 @@ namespace _cov._CardMinion
             return true;
         }
 
-        // Sets.
+        // As a handler.
+        public void _UpdateGameStatus(_EGameState currentGameState)
+        {
+            this._Base._GameCurrentState = currentGameState;
+        }
 
+        // Checks.
+        public bool _CheckIfCardMinionCanBeTransferedToThisField(_EField field)
+        {
+            return this._Base._CardMinionTransferModerator._CheckIfCardMinionCanBeTransferedToThisField(field);
+        }
+
+        // Sets.
         public void _SetCardMinionBackgroundToGray() => this._Base._CardMinionBackgroundModerator._SetBackgroundOfCardMinionToGray();
         public void _SetCardMinionBackgroundToOriginal() => this._Base._CardMinionBackgroundModerator._SetBackgroundOfCardMinionToOriginal();
+
+
         #endregion
 
     }
@@ -92,11 +113,16 @@ namespace _cov._CardMinion
     public interface _ICardMinionController
     {
         _ICardMinionBase _Base { get; }
+
         bool _TransferCardMinionToThisField(Transform parent, Vector3 position, _EField field);
         bool _DiscardCardMinion();
+
+        //Checks.
+        bool _CheckIfCardMinionCanBeTransferedToThisField(_EField field);
 
         // Sets.
         void _SetCardMinionBackgroundToGray();
         void _SetCardMinionBackgroundToOriginal();
+
     }
 }

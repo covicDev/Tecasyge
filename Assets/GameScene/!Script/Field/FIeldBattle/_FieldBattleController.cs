@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 
+using _cov._Enum;
+
 namespace _cov._FieldBattle
 {
     public class _FieldBattleController : MonoBehaviour, _IFieldBattleController
     {
         public _IFieldBattleBase _Base => this.transform.GetComponent<_FieldBattleBase>();
         public _Enum._EField _FieldType => _Enum._EField.Battlefield;
+
     }
 
     public interface _IFieldBattleController

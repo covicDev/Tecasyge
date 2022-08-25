@@ -58,7 +58,7 @@ namespace _cov._Util._Camera
             // If middle mouse clicked then reset camera.
             if (Input.GetMouseButton(2))
             {
-                this._CameraReset();
+              //  this._CameraReset();
             }
 
             // If mouse right button pressed then move camera.

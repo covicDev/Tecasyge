@@ -7,10 +7,10 @@ namespace _cov._CardGold
 {
     public class _CardGoldMovement : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
-        public _ICardGoldBase _CardGoldBase => this.transform.GetComponent<_CardGoldBase>();
+        public _ICardGoldBase _Base => this.transform.GetComponent<_CardGoldBase>();
 
         #region --- Variable ---
-        private Camera _camera => this._CardGoldBase._CardGoldManager._CameraMain;
+        private Camera _camera => this._Base._CardGoldManager._CameraMain;
         private CanvasGroup _canvasGroup => this.transform.GetComponent<CanvasGroup>();
         private _EField _fieldBeforeBeginDrag = _EField.Null;
 
@@ -21,7 +21,7 @@ namespace _cov._CardGold
             this._canvasGroup.blocksRaycasts = false;
 
             // Get current gold card field.
-            this._fieldBeforeBeginDrag = this._CardGoldBase._CurrentField;
+            this._fieldBeforeBeginDrag = this._Base._CurrentField;
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -32,7 +32,8 @@ namespace _cov._CardGold
             // Drag only when left mouse is used.
             if (Input.GetMouseButton(0))
             {
-                if (_onDragCardGold) return;
+                if (_onDragCardGoldToFieldHand) return;
+               // if (_onDragCardGoldToFieldHand) return;
             }
         }
 
@@ -41,7 +42,7 @@ namespace _cov._CardGold
             this._canvasGroup.blocksRaycasts = true;
     
             // If field type doesn't change then move gold card to it's parent position.
-            if(this._fieldBeforeBeginDrag == this._CardGoldBase._CurrentField)
+            if(this._fieldBeforeBeginDrag == this._Base._CurrentField)
             {
                 this.transform.position = this.transform.parent.position;
             }
@@ -52,9 +53,25 @@ namespace _cov._CardGold
         {
             get
             {
+                if (this._Base._CurrentGameState != _EGameState.Draw || this._Base._CurrentGameState != _EGameState.Place) return false;
+
                 var data = this._camera.ScreenToWorldPoint(Input.mousePosition);
                 data.z = 0f;
                 this.transform.position = data;
+                return true;
+            }
+        }
+
+        private bool _onDragCardGoldToFieldHand
+        {
+            get
+            {
+                if (this._Base._CurrentGameState != _EGameState.Draw) return false;
+
+                var data = this._camera.ScreenToWorldPoint(Input.mousePosition);
+                data.z = 0f;
+                this.transform.position = data;
+
                 return true;
             }
         }

@@ -52,7 +52,7 @@ namespace _cov._Util._Camera
             }
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             if (this.__onHover)
             {

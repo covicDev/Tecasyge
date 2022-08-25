@@ -15,5 +15,6 @@
         public static string _ResourceCardMinion => _ResourceCardPatch + "CardMinion";
         public static string _ResourceCardGold => _ResourceCardPatch + "CardGold";
         public static string _ResourceFieldPile => _ResourceCardPatch + "FieldPile";
+        public static string _ResourceFieldSlot => _ResourceCardPatch + "FieldHandSlot";
     }
 }
