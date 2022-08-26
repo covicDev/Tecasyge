@@ -69,6 +69,9 @@ namespace _cov._FieldDiscard
             #region --- Card gold interaction ---
             if (data.CompareTag(_SName._TagCardGold))
             {
+                var dataScript = data.transform.GetComponent<_CardGold._CardGoldController>();
+                if (dataScript._CheckIfCardGoldCanBeTransferedToThisField(this._FieldDiscardController._Base._FieldType) == false) return;
+
                 data.transform.GetComponent<_CardGold._CardGoldController>()._SetCardGoldBackgroundToGray();
                 this._FieldDiscardController._Base._FieldDiscardBackgroundModerator._SetBackgroundOfFieldDiscardApproval();
             }

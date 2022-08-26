@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 
 using _cov._Enum;
+using _cov._Common;
 
 namespace _cov._CardGold
 {
     public class _CardGoldBase : MonoBehaviour, _ICardGoldBase
     {
-        public Transform _GameManager => GameObject.Find("GameManager").transform;
+        public Transform _GameManager => _CommonManager._GameManager;
         public _ICardGoldManager _CardGoldManager => this._GameManager.GetComponentInChildren<_CardGoldManager>();
         public _ICardGoldBackgroundModerator _CardGoldBackgroundModerator => this.transform.GetComponent<_CardGoldBackgroundModerator>();
 

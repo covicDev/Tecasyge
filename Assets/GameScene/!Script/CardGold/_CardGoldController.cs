@@ -20,7 +20,7 @@ namespace _cov._CardGold
         private void OnDestroy()
         {
             // Detach as a Game state handler.
-            this._Base._GameManager.GetComponentInChildren<_GameStateController>()._Detach(this);
+            GameObject.Find("GameManager").transform.GetComponentInChildren<_GameStateController>()._Detach(this);
         }
 
         #region --- Public method ---
@@ -58,6 +58,7 @@ namespace _cov._CardGold
 
         public bool _DiscardCardGold()
         {
+          //  this._Base._GameManager.GetComponentInChildren<_GameStateController>()._Detach(this);
             Destroy(this.gameObject);
             return true;
         }

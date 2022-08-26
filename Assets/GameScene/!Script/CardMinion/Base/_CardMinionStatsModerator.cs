@@ -37,13 +37,16 @@ namespace _cov._CardMinion
         #region --- Check ---
         public bool _CheckIfGoldCardCanBeGivenToThisMinion()
         {
-            // checks if minion card is on battlefield.
-            if (this._CardMinionBase._CardMinionFieldModerator._GetCurrentField() == _Enum._EField.Battlefield)
-            {
-                return true;
-            }
+            // Checks if it Place turn.
+            if (this._CardMinionBase._GameCurrentState != _Enum._EGameState.Place) return false;
 
-            return false;
+            // Checks if minion card is on battlefield.
+            if (this._CardMinionBase._CardMinionFieldModerator._GetCurrentField() != _Enum._EField.Battlefield) return false;
+
+            // Check if minion can get more gold card.
+            if (this._checkIfCardMinionCanGetMoreCardGold() != true) return false;
+
+            return true;
         }
 
         public bool _CheckIfMinionCanAttackOthers()
@@ -104,6 +107,11 @@ namespace _cov._CardMinion
             }
         }
 
+        private bool _checkIfCardMinionCanGetMoreCardGold()
+        {
+            if (this._currentStats._Gold < this._baseStats._Gold) return true;
+            return false;
+        }
         #endregion
 
     }

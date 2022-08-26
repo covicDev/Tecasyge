@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 
 using _cov._Enum;
+using _cov._Common;
 
 namespace _cov._CardMinion
 {
     public class _CardMinionBase : MonoBehaviour, _ICardMinionBase
     {
-        public Transform _GameManager => GameObject.Find("GameManager").transform;
+        public Transform _GameManager => _CommonManager._GameManager;
         public Transform _CardGoldParent => this.transform.Find(_SCardMinonName._AddonName).transform;
 
         #region --- References of card minion classes ---

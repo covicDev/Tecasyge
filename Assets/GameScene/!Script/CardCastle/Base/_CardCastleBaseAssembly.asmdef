@@ -1,3 +1,18 @@
-﻿{
-	"name": "_CardCastleBaseAssembly"
+{
+    "name": "_CardCastleBaseAssembly",
+    "references": [
+        "GUID:94181fe7b9147f64a91545581f254c7f",
+        "GUID:03ea209287f631045b0ee30564bef4c8",
+        "GUID:aebffe67aecf61c45bb2b0f5af40aec1",
+        "GUID:075c1314c1b74f642b41d82120e2ec32"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

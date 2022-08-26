@@ -1,7 +1,8 @@
 {
     "name": "_CardCastleAssembly",
     "references": [
-        "GUID:eab03a000a7b2324fbd603b54695e0c3"
+        "GUID:eab03a000a7b2324fbd603b54695e0c3",
+        "GUID:03ea209287f631045b0ee30564bef4c8"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

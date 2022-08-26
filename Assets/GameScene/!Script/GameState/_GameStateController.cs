@@ -28,6 +28,7 @@ namespace _cov._GameState
         {
             foreach (var observer in _observers)
             {
+           //     Debug.Log($"Current observer: {observer}");
                 observer._UpdateGameStatus(this._GameCurrentState);
             }
         }

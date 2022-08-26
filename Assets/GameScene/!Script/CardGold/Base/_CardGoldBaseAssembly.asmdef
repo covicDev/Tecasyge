@@ -1,7 +1,8 @@
 {
     "name": "_CardGoldBaseAssembly",
     "references": [
-        "GUID:075c1314c1b74f642b41d82120e2ec32"
+        "GUID:075c1314c1b74f642b41d82120e2ec32",
+        "GUID:94181fe7b9147f64a91545581f254c7f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

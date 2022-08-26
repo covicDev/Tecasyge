@@ -2,14 +2,15 @@
 
 using _cov._Table;
 using _cov._CardMinion._CardMinionMaker;
+using _cov._Common;
 
 namespace _cov._CardMinion
 {
     public class _CardMinionManager : MonoBehaviour, _ICardMinionManager
     {
-        public Camera _CameraMain => Camera.main;
-        public _TableSpriteNumber _TableOfMinionSprites => GameObject.Find("GameManager").transform.GetComponentInChildren<_TableSpriteNumber>();
-        public _ICardMinionStatsMaker _CardMinionStatsMaker => GameObject.Find("GameManager").transform.GetComponentInChildren<_CardMinionStatsMaker>();
+        public Camera _CameraMain => _CommonManager._CameraMain;
+        public _TableSpriteNumber _TableOfMinionSprites => _CommonManager._GameManager.GetComponentInChildren<_TableSpriteNumber>();
+        public _ICardMinionStatsMaker _CardMinionStatsMaker => _CommonManager._GameManager.transform.GetComponentInChildren<_CardMinionStatsMaker>();
 
         #region --- Card minion canvas alpha ---
         [SerializeField] float _cardMinionCanvasAlphaDown = 0.5f;

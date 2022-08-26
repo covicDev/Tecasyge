@@ -31,7 +31,7 @@ namespace _cov._CardMinion._CardMinionMaker
 
             int[] val = new int[4];
 
-            int gold = 1;
+            int gold = Random.Range(1, 4);
 
             int length = 6;
             int ticket = Random.Range(0, length);

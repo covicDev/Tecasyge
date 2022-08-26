@@ -38,7 +38,7 @@ namespace _cov._CardMinion
         private void OnDestroy()
         {
             // Detach as a Game state handler.
-            this._Base._GameManager.GetComponentInChildren<_GameStateController>()._Detach(this);
+            GameObject.Find("GameManager").transform.GetComponentInChildren<_GameStateController>()._Detach(this);
         }
 
         #region --- Private method ---
@@ -85,6 +85,7 @@ namespace _cov._CardMinion
 
         public bool _DiscardCardMinion()
         {
+           // this._Base._GameManager.GetComponentInChildren<_GameStateController>()._Detach(this);
             Destroy(this.gameObject);
             return true;
         }

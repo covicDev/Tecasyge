@@ -32,8 +32,7 @@ namespace _cov._CardGold
             // Drag only when left mouse is used.
             if (Input.GetMouseButton(0))
             {
-                if (_onDragCardGoldToFieldHand) return;
-               // if (_onDragCardGoldToFieldHand) return;
+                if (_onDragCardGoldToField) return;
             }
         }
 
@@ -62,11 +61,11 @@ namespace _cov._CardGold
             }
         }
 
-        private bool _onDragCardGoldToFieldHand
+        private bool _onDragCardGoldToField
         {
             get
             {
-                if (this._Base._CurrentGameState != _EGameState.Draw) return false;
+                if (this._Base._CurrentGameState != _EGameState.Draw && this._Base._CurrentGameState != _EGameState.Place) return false;
 
                 var data = this._camera.ScreenToWorldPoint(Input.mousePosition);
                 data.z = 0f;
